@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>关于-webkit-的一些用法 | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="关于-webkit-的一些用法">
+            
+	            关于-webkit-的一些用法
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/07/31</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="webkit-tap-highlight-color"><a href="#webkit-tap-highlight-color" class="headerlink" title="-webkit-tap-highlight-color"></a>-webkit-tap-highlight-color</h2><p>这个属性只用于iOS (iPhone和iPad)。当你点击一个链接或者通过Javascript定义的可点击元素的时候，它就会出现一个半透明的灰色背景。要重设这个表现，你可以设置-webkit-tap-highlight-color为任何颜色。<br>想要禁用这个高亮，设置颜色的alpha值为0即可。<br>示例：设置高亮色为50%透明的红色:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-tap-highlight-color</span>: <span class="selector-tag">rgba</span>(255,0,0,0<span class="selector-class">.5</span>);</span><br></pre></td></tr></table></figure></p>
+<p><code>浏览器支持: 只有iOS(iPhone和iPad)</code></p>
+<h2 id="css3中-webkit-text-size-adjust详解："><a href="#css3中-webkit-text-size-adjust详解：" class="headerlink" title="css3中-webkit-text-size-adjust详解："></a>css3中-webkit-text-size-adjust详解：</h2><ul>
+<li>当样式表里font-size&lt;12px时，中文版chrome浏览器里字体显示仍为12px，这时可以用 html{-webkit-text-size-adjust:none;}</li>
+<li>-webkit-text-size-adjust放在body上会导致页面缩放失效</li>
+<li>body会继承定义在html的样式</li>
+<li>用-webkit-text-size-adjust不要定义成可继承的或全局的</li>
+</ul>
+<h2 id="outline：none"><a href="#outline：none" class="headerlink" title="outline：none"></a>outline：none</h2><ul>
+<li>在pc端为a标签定义这个样式的目的是为了取消ie浏览器下点击a标签时出现的虚线。ie7及以下浏览器还不识别此属性，需要在a标签上添加hidefocus=”true”</li>
+<li>input，textarea{outline:none}  取消chrome下默认的文本框聚焦样式 </li>
+<li>在移动端是不起作用的，想要去除文本框的默认样式可以使用-webkit-appearance，聚焦时候默认样式的取消是-webkit-tap-highlight-color。看到一些移动端reset文件加了此属性，其实是多余。</li>
+<li>webkit-appearance   -webkit-appearance: none;   //消除输入框和按钮的原生外观，在iOS上加上这个属性才能给按钮和输入框自定义样式 。   注意：不同type的input使用这个属性之后表现不一。text、button无样式，radio、checkbox直接消失</li>
+<li>-webkit-user-select   -webkit-user-select: none; // 禁止页面文字选择 ，此属性不继承，一般加在body上规定整个body的文字都不会自动调整</li>
+<li>-webkit-touch-callout   -webkit-touch-callout:none;  // 禁用长按页面时的弹出菜单(iOS下有效) ,img和a标签都要加</li>
+</ul>
+<p>CSS3那些不为人知的高级属性<br> <a href="http://www.cnblogs.com/cosiray/archive/2012/12/06/2804770.html" target="_blank" rel="noopener">http://www.cnblogs.com/cosiray/archive/2012/12/06/2804770.html</a><br>尽管现代浏览器已经支持了众多的CSS3属性，但是大部分设计师和开发人员貌似依然在关注于一些很“主流”的属性，如border-radius、box-shadow或者transform等。它们有良好的文档、很好的测试并且最常用到，所以如果你最近在设计网站，你很难能脱离它们。</p>
+<p>但是，隐藏在浏览器的大宝库中是一些高级的、被严重低估的属性，但是它们并没有得到太多的关注。或许它们中的一些应该这样(被无视)，但是其它的属性应该得到更多的认可。最伟大的财富隐藏在Webkit的下面，而且在iPhone、iPad和Android apps的时代，开始了解它们会灰常有用。就连Firefox等使用的Gecko引擎，也提供了一些独特的属性。在本文中，我们将看一下鲜为人知的CSS 2.1和CSS3属性以及它们在现代浏览器中的支持情况。</p>
+<p>说明: 对于每个属性，我们这里规定：”WebKit” 即指代使用Webkit内核的浏览器(Safari、Chrome、iPhone、iPad、Android等)，”Gecko“指代采用Gecko内核的浏览器(Firefox等)。然后有的属性是官方CSS 2.1. 规范的一部分，这意味着更多的浏览器甚至一些古老的浏览器也会支持它们。最后，一个CSS3 的标签标明遵守这个标准，被最新的浏览器版本——比如Firefox 4、Chrome 10、Safari 5、Opera 11.10以及IE9支持的属性。</p>
+<p>WebKit特有属性<br>-webkit-mask<br>这个属性是相当强大的，所以详细的介绍超出了本文的范畴，它非常值得深入研究，因为它可以在实际应用中为你省掉很多时间。</p>
+<p>-webkit-mask让为一个元素添加蒙板成为可能，从而你可以创建任意形状的花样。蒙板可以是CSS3渐变或者半透明的PNG图片。蒙板元素的alpha值为0的时候会覆盖下面的元素，为1的时候会完全显示下面的内容。相关的属性有-webkit-mask-clip、 -webkit-mask-position 和-webkit-mask-repeat等，严重依赖来自于background中的语法。更多信息请查看webkit的博客和下面的链接。</p>
+<p>示例</p>
+<p>图片蒙板:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(img/image.jpg) repeat;</span><br><span class="line">  <span class="attribute">-webkit-mask</span>: <span class="built_in">url</span>(img/mask.png);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>示例</p>
+<p>渐变蒙板:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element2</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">url</span>(img/image.jpg) repeat;</span><br><span class="line">  <span class="attribute">-webkit-mask</span>: <span class="built_in">-webkit-gradient</span>(linear, left top, left bottom, from(rgba(0,0,0,1)), <span class="built_in">to</span>(rgba(0,0,0,0)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>扩展阅读: Safari Developer Library</p>
+<p>-webkit-text-stroke<br>CSS边框的一个不足就是只有矩形的元素才能使用。-webkit-text-stroke可以为文字添加边框。它不但可以设置文字边框的宽度，也能设置其颜色。而且，配合使用color: transparent属性，你还可以创建镂空的字体！</p>
+<p>示例</p>
+<p>为所有的<code>&lt;h1&gt;</code>标题设定一个2px宽的蓝色边框:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">-webkit-text-stroke</span>: <span class="number">2px</span> blue&#125;</span><br></pre></td></tr></table></figure>
+<p>另一个特性是，通过设定1px的透明边框，可以让文字变得平滑:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h2</span> &#123;<span class="attribute">-webkit-text-stroke</span>: <span class="number">1px</span> transparent&#125;</span><br></pre></td></tr></table></figure>
+<p>创建红色镂空字体：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h3</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: transparent;</span><br><span class="line">  <span class="attribute">-webkit-text-stroke</span>: <span class="number">4px</span> red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>扩展阅读: Safari Developer Library</p>
+<p>-webkit-nbsp-mode<br>换行有时是很棘手的事情：有时你希望文字在适当的地方断行(而不是折行)，有时你又不想这样。一个能控制这个的属性就是-webkit-nbsp-mode，它让你可以改变&nbsp;空白符的行为，强制文字在它被用到的地方断行。通过设置值为space即可实现。</p>
+<p>扩展阅读: Safari Developer Library</p>
+<p>-webkit-tap-highlight-color<br>这个属性只用于iOS (iPhone和iPad)。当你点击一个链接或者通过Javascript定义的可点击元素的时候，它就会出现一个半透明的灰色背景。要重设这个表现，你可以设置-webkit-tap-highlight-color为任何颜色。</p>
+<p>想要禁用这个高亮，设置颜色的alpha值为0即可。</p>
+<p>示例</p>
+<p>设置高亮色为50%透明的红色:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-tap-highlight-color</span>: <span class="selector-tag">rgba</span>(255,0,0,0<span class="selector-class">.5</span>);</span><br></pre></td></tr></table></figure>
+<p>浏览器支持: 只有iOS(iPhone和iPad).</p>
+<p>扩展阅读: Safari Developer Library</p>
+<p>zoom: reset<br>通常来说，zoom是一个IE专用的属性。但是webkit也开始支持它了，而且使用值reset，webkit可以实现不错的效果(有趣的是，IE不支持这个值)。它让你重设掉浏览器中正常的缩放行为——如果某个元素被声明了zoom:reset，页面上的其它元素在用户放大页面的时候都会跟着放大。</p>
+<p>注：其实，我们常用来禁用chrome强制字体大小的时候用到的-webkit-text-size-adjust:none;也是可以实现类似的效果，不同的是，设置该属性的元素内的文字不会被放大/缩小，但是页面上的其它元素则会变化——神飞</p>
+<p>扩展阅读: Safari Developer Library</p>
+<p>-webkit-margin-collapse<br>这个属性属于限制级的，但是它还是非常值得关注。通常，两个相邻的元素的margin会折叠起来(collapse)。这意味着第一个元素的底部的边距和第二个元素的头部边距会被合并到一起。</p>
+<p>最常见的例子就是两个相邻的</p><p>元素会共享他们的margin值。想要控制这个表现，我们可以使用-webkit-margin-collapse及其分拆后的-webkit-margin-top-collapse、-webkit-margin-bottom-collapse等属性。默认值是collapse，值separate则停止共享margin值，也就是说，第一个元素的底部边距和第二个元素的头部边距会正常叠加。</p>
+<p>扩展阅读: Safari Developer Library</p>
+<p>-webkit-box-reflect<br>你还记得几乎每个网站都把他们的网站logo或者头部的文字做成倒影的那个年代吗？谢天谢地，那个年代已经过去了，但是如果你要在一些按钮、导航、或者其他UI元素上更好的使用这个技术，-webkit-box-reflect是更好的选择。</p>
+<p>这个属性接受above、below、left和right四个关键词，它们设置倒影的方向，它们和一个设置元素和它的倒影建的距离的数字一起使用。同时，蒙板图片也是同样支持的(看上面的-webkit-mask部分，不要搞混了哈)。倒影会自动生成并对布局没有影响。下面的元素只用了CSS，第二个按钮用了-webkit-box-reflect属性。</p>
+<p>示例</p>
+<p>这个倒影会出现在它的父元素的下面并有5px的间距:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-box-reflect</span>: <span class="selector-tag">below</span> 5<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
+<p>这个倒影会投射到元素的右边，没有间距。然后，一个蒙板将会被应用(url(mask.png)):</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-box-reflect</span>: <span class="selector-tag">right</span> 0 <span class="selector-tag">url</span>(<span class="selector-tag">mask</span><span class="selector-class">.png</span>);</span><br></pre></td></tr></table></figure>
+<p>扩展阅读: Safari Developer Library</p>
+<p>-webkit-marquee<br>另一个属性让我们回到美好的从前：那个遍地marquee(跑马灯)的年代。有趣的是这个已经被遗弃的标签反而在现在变的很有用，比如我们在比较小的手机屏幕上切换内容，如果不断行的话文字将不能完全显示。</p>
+<p>ozPDA创建的这个天气的应用很好的使用了它。 (如果你木有看到变换的文字，可以尝试换一个城市来体验。需要使用WebKit内核浏览器)</p>
+<p>示例</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.marquee</span> &#123;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="attribute">overflow</span>:-webkit-marquee;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">-webkit-marquee-direction</span>: forwards;</span><br><span class="line">  <span class="attribute">-webkit-marquee-speed</span>: slow;</span><br><span class="line">  <span class="attribute">-webkit-marquee-style</span>: alternate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要让marquee工作需要一些前提条件。首先，white-space必须设置为nowrap，这样才能让文字不自动换行，其次，overflow必须设置为-webkit-marquee，宽度也要设置为比文字实际长度小的数值。</p>
+<p>剩下的属性确保文字从左边滚动到右边(-webkit-marquee-direction)、来回移动(-webkit-marquee-style)以及以比较低的速度移动(-webkit-marquee-speed)。其它的属性有-webkit-marquee-repetition，用来定义marquee重复的次数，-webkit-marquee-increment, 定义每次递增的速度变化。</p>
+<p>注：虽然HTML的marquee标签在XHTML中被抛弃了，但是各浏览器还是支持的，但是有一个问题就是，marquee标签可能会占用比较大的cpu，大猫对其进行了深入的研究，结论是marquee的速度不能太快，而webkit用-webkit-marquee属性是最好的——神飞。</p>
+<p>扩展阅读: Safari Developer Library</p>
+<p>Gecko特有属性<br>font-size-adjust<br>这个有用的CSS3属性目前只有Firefox支持。我们可以用它来设定指定元素的文字大小(font-size)应该相对于小写字母的高度(x-height)而不是大写字母的高度(cap height)。比如，Verdana比同型号的Times字体更清晰，它有着更矮的x-height。为了弥补这个缺陷，我们可以用font-size-adjust属性来纠正后者。</p>
+<p>该属性在拥有不同的x-height的字体上非常有用。即便你在小心的使用小号字体，在问题出现时font-size-adjust也能提供解决方案。</p>
+<p>示例</p>
+<p>如果由于某种原因用户的电脑上没有安装Verdana，那么Arial就会被修正，从而和Verdana有相同的长宽比(0.58)。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line"><span class="attribute">font-family</span>:Verdana, Arial, sans-serif;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line"><span class="attribute">font-size-adjust</span>: <span class="number">0.58</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>浏览器支持: Gecko.</p>
+<p>扩展阅读: Mozilla Developer Network</p>
+<p>image-rendering<br>n年前，图片并不会被按照其原始大小显示，而是被设计师给缩放掉。取决于缩放的大小和上下文，图片可能会在浏览器中展现的不太好或者干脆就是错掉了的。现在，浏览器有了更好的算法来显示缩放的图片，不过，在你的图片被缩放后完全的控制其表现也是件很赞的事情。</p>
+<p>如果你的图片有比较锐的线条并希望他们在缩放后保持它，这个Gecko私有属性就显得特别有用。相关的值是-moz-crisp-edges。同样的算法也用在optimizeSpeed，而auto 和optimizeQuality 定义为标准行为(用可行的最佳质量来缩放元素)。 image-rendering 属性同样可以用于<code>&lt;video&gt;</code> 和<code>&lt;canvas&gt;</code>元素，和用于背景图片一样。这是个CSS3 标准属性，但是目前只有Firefox支持。</p>
+<p>值得注意的是，-ms-interpolation-mode: bicubic，尽管它是个IE专有属性。然而，它让Internet Explorer 7 在缩放图片后将其渲染为比较高的质量。由于这个浏览器默认处理的很烂，所以这个属性可能会很有用。</p>
+<p>浏览器支持: Gecko.</p>
+<p>扩展阅读: Mozilla Developer Network</p>
+<p>-moz-border-top-colors<br>这个属性可以归类为’养眼’。它让你可以在border宽度大于1px的时候为其设置不同的边框颜色。当然-moz-border-bottom-colors, -moz-border-left-colors 和-moz-border-right-colors也是可用的。</p>
+<p>不爽的是，没有一个简写的-moz-border-colors 缩写，所以每个边框都要分开设置。同时，border-width要和给到的颜色的数量保持一致，否则，最后的那个颜色值会填充到剩下的宽度。</p>
+<p>示例</p>
+<p>这个例子中，元素的左右两边边框会是标准的橙色，上下则有种类似渐变的颜色——红黄蓝三色。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"><span class="attribute">border</span>: <span class="number">3px</span> solid orange;</span><br><span class="line"><span class="attribute">-moz-border-top-colors</span>: red yellow blue;</span><br><span class="line"><span class="attribute">-moz-border-bottom-colors</span>: red yellow blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>浏览器支持: Gecko.</p>
+<p>扩展阅读: Mozilla Developer Network</p>
+<p>混合属性<br>-webkit-user-select 和 -moz-user-select<br>或许你常常不希望用户在你的网站上选择文本，无论是否是出于版权的原因。通常大家会有js来实现，另一个方案就是，将-webkit-user-select 和-moz-user-select 的值设为none。</p>
+<p>请谨慎使用这个属性：因为大部分用户是来查看信息的，他们可以复制并存储下来以备将来之用，所以这种方法既无用也无效。如果你禁用了复制粘贴功能，用户还是可以通过查看源文件来获取到他们想要的内容。搞不懂这个属性为什么会被webkit和gecko支持。</p>
+<p>浏览器支持: WebKit, Gecko.</p>
+<p>扩展阅读: Safari Developer Library, Mozilla Developer Network</p>
+<p>-webkit-appearance 和 -moz-appearance<br>你曾经想过将一张图片伪装成单选按钮么？或者，一个输入框看起来像一个复选框？那么现在appearance 出现了。即便你并不想要让一个链接看起来总是像个按钮，下面这个例子也可以让你了解到，只要你愿意就可以做到的：</p>
+<p>示例</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-appearance</span>: button;</span><br><span class="line">  <span class="attribute">-moz-appearance</span>: button;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>浏览器支持: WebKit, Gecko.</p>
+<p>扩展阅读: Safari Developer Library, Mozilla Developer Network, Mozilla Developer Network,CSS3 appearance简介</p>
+<p>text-align: -moz-center/-webkit-center<br>这是一个属性（或者精确来说，是个“属性值”）的存在很让人惊喜啊。要让一个块级元素居中，大家通常将其设置为margin:0 auto。但是，现在你也可以将元素的容器的text-align属性设置为-moz-center 和 -webkit-center。相应的，你也可以通过设置-moz-left、-webkit-left或-moz-right、-webkit-right将元素居左或者居右。</p>
+<p>浏览器支持: WebKit, Gecko.</p>
+<p>扩展阅读: Safari Developer Library</p>
+<p>CSS 2.1属性<br>counter-increment<br>你是否经常希望你可以让一个有序列表或者一篇文章的所有标题自动编号？不幸的是，目前尚未有CSS3属性支持。但是在CSS 2.1中，counter-increment 提供了一个解决方案。这就意味着它已经出现好些年了，而且在IE8中就已经支持了。</p>
+<p>配合:before 伪元素和content 属性，counter-increment可以为所有的HTML标签添加自动的编号。即便是嵌套的编码也是支持的。</p>
+<p>示例</p>
+<p>要给标题编码，先将计算器重设一下:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">counter-reset</span>: thecounter&#125;</span><br></pre></td></tr></table></figure>
+<p>下面的样式让每一个<code>&lt;h1&gt;</code>标题都有一个”Section”的前缀，然后其后面的数字自动的递增1(这是默认的，可以省略掉)，这里thecounter是计算器的名称:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.counter</span> <span class="selector-tag">h1</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">counter-increment</span>: thecounter <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">content</span>:<span class="string">"Section"</span><span class="built_in">counter</span>(thecounter)<span class="string">":"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>示例</p>
+<p>对于一个嵌套编码的列表，重设计数器，然后关掉<ol>的自动编码，因为它是无嵌套的:</ol></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ol</span> &#123;</span><br><span class="line">  <span class="attribute">counter-reset</span>: section;</span><br><span class="line">  <span class="attribute">list-style-type</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，每个<code>&lt;li&gt;</code>设置为自动编号，分割符是一个点(.)，后面跟着一个空格</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">counter-increment</span>: section;</span><br><span class="line">  <span class="attribute">content</span>: <span class="built_in">counters</span>(section,<span class="string">"."</span>)<span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>HTML代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!-- 1 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item <span class="comment">&lt;!-- 2 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!-- 1.1 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!-- 1.2 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="comment">&lt;!-- 3 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>浏览器支持: CSS 2.1.，所有的现代浏览器，IE 7+.</p>
+<p>扩展阅读: W3C，CSS content, counter-increment 和 counter-reset详解</p>
+<p>quotes<br>你会因为你的CMS不知道如何正确转换引用符号而纠结么？那么开始使用quotes属性吧。这样你就可以自定义任何符号了。然后你就可以用:before和:after伪元素为任何期望的元素指定引号了，悲催的是，webkit浏览器不支持这个属性——经测试，chrome 11已经开始支持这个属性了（之前的版本没有测试）。</p>
+<p>示例</p>
+<p>前面的两个符号决定第一级引用内容的引号，后面的两个用于二级引用，以此类推：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">q</span> &#123;</span><br><span class="line">  <span class="attribute">quotes</span>: <span class="string">'«'</span> <span class="string">'»'</span> <span class="string">"‹"</span> <span class="string">"›"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面两行用于为选定元素指定引号:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">q</span><span class="selector-pseudo">:before</span> &#123;<span class="attribute">content</span>: open-quote&#125;</span><br><span class="line"><span class="selector-tag">q</span><span class="selector-pseudo">:after</span> &#123;<span class="attribute">content</span>: close-quote&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，</p><p><q>This is a very <q>nice</q> quote.</q></p>看起来将会是酱紫的：<br>«This is a very ‹nice› quote.»<p></p>
+<p>浏览器支持: CSS 2.1.,除了WebKit，IE 7和IE6的所有现代浏览器。不过chrome是支持的。。。</p>
+<p>扩展阅读: W3C</p>
+<p>问题：要直接的添加符号，CSS文档必须要设置为UTF-8吗？这是一个很纠结的问题。遗憾的是，我不能给出一个明确的答案。我的经验是，不必要设置什么特定的字符集，然后utf-8字符集可能会出错，因为它显示错掉的字符(比如”»”)。而是用iso-8859-1 字符集，一切就都是正常的。</p>
+<p>W3C这样描述：”由于上个例子中由’quotes’定义的引号方便的定位在电脑键盘上，高质量的字符则需要不同的10646字符集。”</p>
+<p>你或许听说过但是没有记住的CSS3属性<br>接近尾声，让我们重温一些不太流行的以及不像border-radius和box-shadow那样被广泛需求的CSS3属性。</p>
+<p>text-overflow<br>或许你会常常遇到这个问题：某个容器对于其内的文字来说太小了，然后你不得不用javascript来截断字符串并添加”…”符号以避免文字溢出。</p>
+<p>忘掉它吧！采用CSS3和text-overflow: ellipsis，如果文字比它的容器的宽度要长的话，你就可以强制文字以”…”结束它。唯一的要求是设置overflow:hidden。不幸的是，Firefox不支持这个属性，但是貌似在最近的版本中将会提供支持。</p>
+<p>示例</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>浏览器支持: CSS 3，所有浏览器的最新版本，除了Firefox，IE从IE6开始支持，据说Firefox到6.0也会提供支持的——希望如此吧。</p>
+<p>扩展阅读: W3C</p>
+<p>word-wrap<br>当文字在一个比较窄的容器中时，它的某个部分可能会因为太长而不能正确的换行。比如链接就常常引起问题。如果你不想用overflow: hidden隐藏溢出的文字，那么你就可以设置 word-wrap 为break-word，它可以让字符串在到达容器的宽度限制时换行。</p>
+<p>示例</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">word-wrap</span>: break-word;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>浏览器支持: CSS 3，所有现代浏览器。</p>
+<p>扩展阅读: W3C</p>
+<p>resize<br>如果你在使用Firefox或Chrome，那么你肯定注意到了文本框的右下角默认有个小的手柄，它可以让你调整它们的大小。这个标准的行为由CSS3 属性 resize: both实现。</p>
+<p>但是它并不仅限于textarea。它可以用于所有的HTML元素。horizontal 和 vertical 值用于控制调整水平方向还是垂直方向。</p>
+<p>请注意：对于display:block元素，如果设置了overflow:visible，resize属性将会无效(这一点原文描述不详——by 神飞)。</p>
+<p>浏览器支持: CSS3, 除了Opera和IE以为的其它最新的浏览器。</p>
+<p>扩展阅读: Safari Developer Library</p>
+<p>background-attachment<br>当你为一个设置了overflow:auto的元素指定背景图片的时候，当内容太多而出现滚动条后，拖动滚动条就会发现背景图片的位置是固定的，而不是随着滚动条移动。如果你想要背景图片随着内容而滚动，可以设置background-attachment:local。</p>
+<p>浏览器支持: CSS 3，除了Firefox以外的所有现代浏览器，Firefox是支持background-attachment属性的，只是不支持local值.</p>
+<p>扩展阅读: W3C</p>
+<p>text-rendering<br>随着越来越多的网站开始用@font-face来渲染文字，易读性开始被关注了。小号字体上，文字会更容易出现。由于目前还没有CSS属性控制显示在线字体的微妙细节，你可以利用text-rendering来启用kerning 和 ligatures。</p>
+<p>Gecko 和WebKit 浏览器处理这个属性的方式很不一样。前者默认启用这个特性，而后者，你需要将其设置为optimizeLegibility。</p>
+<p>浏览器支持: CSS3, 所有WebKit 和Firefox浏览器.</p>
+<p>扩展阅读: W3C</p>
+<p>transform: rotateX/transform: rotateY<br>如果你已经开始使用CSS3，那么你可能会比较熟悉transform: rotate()，这个在z轴上旋转元素的属性。</p>
+<p>但是你是否也知道，它也可以更深入的旋转的(比如，围绕x轴和y轴)？ 这些变形结合-webkit-backface-visibility: hidden会更合适。</p>
+<p>示例</p>
+<p>如果你鼠标经过这个元素，它将会旋转180°，倒转过来:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(180deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>小技巧:如果只是映射一个元素，你可以设置transform为rotateX(180deg) (对应rotateY)或者设置transform 为scaleX(-1) (对应scaleY).</p>
+<p>浏览器支持: CSS3, WebKit、firefox、Opera以及IE9</p>
+<p>扩展阅读: W3C，你需要知道的CSS3 动画技术</p>
+<p>结语<br>正如你希望见到的，还有很多未知的很有用的属性。他们中的很多仍然处于试验性阶段并且可能一直这样甚至最终可能会被浏览器摈弃。而有些有望在后续版本中被所有的浏览器支持。</p>
+<p>然而，很难判断判断他们中的一些是好是坏，WebKit特有的属性随着iOS和Android的成功显得越来越重要。当然，一些CSS3属性多多少少已经可以使用了。</p>
+<p>如果你不喜欢私有属性，你可以将它们视为实验直到可以在代码中实现以增强用户体验。同时，W3C的CSS validator 同样支持私有属性，它会返回警告而不是错误。</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/08/02/9529/" class="pre-post btn btn-default" title='rollup 介绍'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">rollup 介绍</span>
+        </a>
+    
+    
+        <a href="/2018/07/27/9527/" class="next-post btn btn-default" title='精品网站收纳'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">精品网站收纳</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#webkit-tap-highlight-color"><span class="toc-text">-webkit-tap-highlight-color</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css3中-webkit-text-size-adjust详解："><span class="toc-text">css3中-webkit-text-size-adjust详解：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#outline：none"><span class="toc-text">outline：none</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
