@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>理解ReactElement和ReactClass的概念 | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="理解ReactElement和ReactClass的概念">
+            
+	            理解ReactElement和ReactClass的概念
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/08/06</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="https://www.cyt-rain.cn/2016/10/23/react/1.jpg" alt="12"></p>
+<h1 id="理解ReactElement和ReactClass的概念"><a href="#理解ReactElement和ReactClass的概念" class="headerlink" title="理解ReactElement和ReactClass的概念"></a>理解ReactElement和ReactClass的概念</h1><p>首先让我们理解两个概念：</p>
+<h2 id="ReactElement"><a href="#ReactElement" class="headerlink" title="ReactElement"></a>ReactElement</h2><p>一个描述DOM节点或component实例的字面级对象。它包含一些信息，包括组件类型type和属性props。就像一个描述DOM节点的元素（虚拟节点）。它们可以被创建通过React.createElement方法或jsx写法</p>
+<p>分为DOM Element和Component Elements两类：</p>
+<ul>
+<li>DOM Elements</li>
+</ul>
+<p>当节点的type属性为字符串时，它代表是普通的节点，如div,span</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: <span class="string">'button'</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    className: <span class="string">'button button-blue'</span>,</span><br><span class="line">    children: &#123;</span><br><span class="line">      type: <span class="string">'b'</span>,</span><br><span class="line">      props: &#123;</span><br><span class="line">        children: <span class="string">'OK!'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Component Elements</li>
+</ul>
+<p>当节点的type属性为一个函数或一个类时，它代表自定义的节点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; children, color &#125; = <span class="keyword">this</span>.props;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      type: <span class="string">'button'</span>,</span><br><span class="line">      props: &#123;</span><br><span class="line">        className: <span class="string">'button button-'</span> + color,</span><br><span class="line">        children: &#123;</span><br><span class="line">          type: <span class="string">'b'</span>,</span><br><span class="line">          props: &#123;</span><br><span class="line">            children: children</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Component Elements</span></span><br><span class="line">&#123;</span><br><span class="line">  type: Button,</span><br><span class="line">  props: &#123;</span><br><span class="line">    color: <span class="string">'blue'</span>,</span><br><span class="line">    children: <span class="string">'OK!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ReactClass"><a href="#ReactClass" class="headerlink" title="ReactClass"></a>ReactClass</h3><p>ReactClass是平时我们写的Component组件(类或函数)，例如上面的Button类。ReactClass实例化后调用render方法可返回DOM Element。</p>
+<h2 id="react渲染过程"><a href="#react渲染过程" class="headerlink" title="react渲染过程"></a>react渲染过程</h2><p><img src="https://www.processon.com/chart_image/580c77a7e4b0111d9dbab419.png" alt="2"></p>
+<p>过程理解：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// element是 Component Elements</span></span><br><span class="line">ReactDOM.render(&#123;</span><br><span class="line">  type: Form,</span><br><span class="line">  props: &#123;</span><br><span class="line">    isSubmitted: <span class="literal">false</span>,</span><br><span class="line">    buttonText: <span class="string">'OK!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+<p>1.调用React.render方法，将我们的element根虚拟节点渲染到container元素中。element可以是一个字符串文本元素，也可以是如上介绍的ReactElement(分为DOM Elements, Component Elements)。<br>2.根据element的类型不同，分别实例化ReactDOMTextComponent, ReactDOMComponent, ReactCompositeComponent类。这些类用来管理ReactElement,负责将不同的ReactElement转化成DOM(mountComponent方法),负责更新DOM(receiveComponent方法，updateComponent方法, 如下会介绍)等。<br>3.ReactCompositeComponent实例调用mountComponent方法后内部调用render方法，返回了DOM Elements。再对如图的步骤2️⃣递归。</p>
+<h2 id="react更新机制"><a href="#react更新机制" class="headerlink" title="react更新机制"></a>react更新机制</h2><p>每个类型的元素都要处理好自己的更新：</p>
+<p>1.自定义元素的更新，主要是更新render出的节点，做甩手掌柜交给render出的节点的对应component去管理更新。</p>
+<p>2.text节点的更新很简单，直接更新文案。</p>
+<p>3.浏览器基本元素的更新，分为两块：</p>
+<p>  1.先是更新属性，对比出前后属性的不同，局部更新。并且处理特殊属性，比如事件绑定。<br>  2.然后是子节点的更新，子节点更新主要是找出差异对象，找差异对象的时候也会使用上面的shouldUpdateReactComponent来判断，如果是可以直接更新的就会递归调用子节点的更新,这样也会递归查找差异对象。不可直接更新的删除之前的对象或添加新的对象。之后根据差异对象操作dom元素（位置变动，删除，添加等）。</p>
+<h2 id="第一步：调用this-setState"><a href="#第一步：调用this-setState" class="headerlink" title="第一步：调用this.setState"></a>第一步：调用this.setState</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ReactClass.prototype.setState = <span class="function"><span class="keyword">function</span>(<span class="params">newState</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//this._reactInternalInstance是ReactCompositeComponent的实例</span></span><br><span class="line">    <span class="keyword">this</span>._reactInternalInstance.receiveComponent(<span class="literal">null</span>, newState);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第二步：调用内部receiveComponent方法"><a href="#第二步：调用内部receiveComponent方法" class="headerlink" title="第二步：调用内部receiveComponent方法"></a>第二步：调用内部receiveComponent方法</h2><p>这里主要分三种情况，文本元素，基本元素，自定义元素。</p>
+<h3 id="自定义元素："><a href="#自定义元素：" class="headerlink" title="自定义元素："></a>自定义元素：</h3><p>receiveComponent方法源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// receiveComponent方法</span></span><br><span class="line">ReactCompositeComponent.prototype.receiveComponent = <span class="function"><span class="keyword">function</span>(<span class="params">nextElement, transaction, nextContext</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> prevElement = <span class="keyword">this</span>._currentElement;</span><br><span class="line">    <span class="keyword">var</span> prevContext = <span class="keyword">this</span>._context;</span><br><span class="line">    <span class="keyword">this</span>._pendingElement = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">this</span>.updateComponent(</span><br><span class="line">      transaction,</span><br><span class="line">      prevElement,</span><br><span class="line">      nextElement,</span><br><span class="line">      prevContext,</span><br><span class="line">      nextContext</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>updateComponent方法源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// updateComponent方法</span></span><br><span class="line">ReactCompositeComponent.prototype.updateComponent = <span class="function"><span class="keyword">function</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    transaction,</span></span></span><br><span class="line"><span class="function"><span class="params">    prevParentElement,</span></span></span><br><span class="line"><span class="function"><span class="params">    nextParentElement,</span></span></span><br><span class="line"><span class="function"><span class="params">    prevUnmaskedContext,</span></span></span><br><span class="line"><span class="function"><span class="params">    nextUnmaskedContext</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="comment">// 简写.....</span></span><br><span class="line">	<span class="comment">// 不是state更新而是props更新</span></span><br><span class="line">    <span class="keyword">if</span> (prevParentElement !== nextParentElement) &#123;</span><br><span class="line">      willReceive = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">if</span> (willReceive &amp;&amp; inst.componentWillReceiveProps) &#123;</span><br><span class="line">		<span class="comment">// 调用生命周期componentWillReceiveProps方法</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 是否更新元素</span></span><br><span class="line">	<span class="keyword">if</span> (inst.shouldComponentUpdate) &#123;</span><br><span class="line">		<span class="comment">// 如果提供shouldComponentUpdate方法</span></span><br><span class="line">		shouldUpdate = inst.shouldComponentUpdate(nextProps, nextState, nextContext);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>._compositeType === CompositeTypes.PureClass) &#123;</span><br><span class="line">          <span class="comment">// 如果是PureClass，浅层对比props和state</span></span><br><span class="line">          shouldUpdate =</span><br><span class="line">            !shallowEqual(prevProps, nextProps) ||</span><br><span class="line">            !shallowEqual(inst.state, nextState);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">if</span> (shouldUpdate) &#123;</span><br><span class="line">      <span class="comment">// 更新元素</span></span><br><span class="line">      <span class="keyword">this</span>._performComponentUpdate(</span><br><span class="line">        nextParentElement,</span><br><span class="line">        nextProps,</span><br><span class="line">        nextState,</span><br><span class="line">        nextContext,</span><br><span class="line">        transaction,</span><br><span class="line">        nextUnmaskedContext</span><br><span class="line">      );</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 不更新元素，但仍然设置props和state</span></span><br><span class="line">      <span class="keyword">this</span>._currentElement = nextParentElement;</span><br><span class="line">      <span class="keyword">this</span>._context = nextUnmaskedContext;</span><br><span class="line">      inst.props = nextProps;</span><br><span class="line">      inst.state = nextState;</span><br><span class="line">      inst.context = nextContext;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="comment">// .......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>内部_performComponentUpdate方法源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 内部_updateRenderedComponentWithNextElement方法</span></span><br><span class="line">ReactCompositeComponent.prototype._updateRenderedComponentWithNextElement = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// 判定两个element需不需要更新</span></span><br><span class="line">   <span class="keyword">if</span> (shouldUpdateReactComponent(prevRenderedElement, nextRenderedElement)) &#123;</span><br><span class="line">     <span class="comment">// 如果需要更新，就继续调用子节点的receiveComponent的方法，传入新的element更新子节点。</span></span><br><span class="line">     ReactReconciler.receiveComponent(</span><br><span class="line">       prevComponentInstance,</span><br><span class="line">       nextRenderedElement,</span><br><span class="line">       transaction,</span><br><span class="line">       <span class="keyword">this</span>._processChildContext(context)</span><br><span class="line">     );</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="comment">// 卸载之前的子节点，安装新的子节点</span></span><br><span class="line">     <span class="keyword">var</span> oldHostNode = ReactReconciler.getHostNode(prevComponentInstance);</span><br><span class="line">     ReactReconciler.unmountComponent(</span><br><span class="line">       prevComponentInstance,</span><br><span class="line">       safely,</span><br><span class="line">       <span class="literal">false</span> <span class="comment">/* skipLifecycle */</span></span><br><span class="line">     );</span><br><span class="line">     <span class="keyword">var</span> nodeType = ReactNodeTypes.getType(nextRenderedElement);</span><br><span class="line">     <span class="keyword">this</span>._renderedNodeType = nodeType;</span><br><span class="line">     <span class="keyword">var</span> child = <span class="keyword">this</span>._instantiateReactComponent(</span><br><span class="line">       nextRenderedElement,</span><br><span class="line">       nodeType !== ReactNodeTypes.EMPTY <span class="comment">/* shouldHaveDebugID */</span></span><br><span class="line">     );</span><br><span class="line">     <span class="keyword">this</span>._renderedComponent = child;</span><br><span class="line">     <span class="keyword">var</span> nextMarkup = ReactReconciler.mountComponent(</span><br><span class="line">       child,</span><br><span class="line">       transaction,</span><br><span class="line">       <span class="keyword">this</span>._hostParent,</span><br><span class="line">       <span class="keyword">this</span>._hostContainerInfo,</span><br><span class="line">       <span class="keyword">this</span>._processChildContext(context),</span><br><span class="line">       debugID</span><br><span class="line">     );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>shouldUpdateReactComponent函数源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shouldUpdateReactComponent</span>(<span class="params">prevElement, nextElement</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> prevEmpty = prevElement === <span class="literal">null</span> || prevElement === <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">var</span> nextEmpty = nextElement === <span class="literal">null</span> || nextElement === <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span> (prevEmpty || nextEmpty) &#123;</span><br><span class="line">    <span class="keyword">return</span> prevEmpty === nextEmpty;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> prevType = <span class="keyword">typeof</span> prevElement;</span><br><span class="line">  <span class="keyword">var</span> nextType = <span class="keyword">typeof</span> nextElement;</span><br><span class="line">  <span class="keyword">if</span> (prevType === <span class="string">'string'</span> || prevType === <span class="string">'number'</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果先前的ReactElement对象类型是字符串或数字，新的ReactElement对象类型也是字符串或数字，则需要更新，新的ReactElement对象类型是对象，则不应该更新，直接替换。</span></span><br><span class="line">    <span class="keyword">return</span> (nextType === <span class="string">'string'</span> || nextType === <span class="string">'number'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  	<span class="comment">// 如果先前的ReactElement对象类型是对象，新的ReactElement对象类型也是对象，并且标签类型和key值相同，则需要更新</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      nextType === <span class="string">'object'</span> &amp;&amp;</span><br><span class="line">      prevElement.type === nextElement.type &amp;&amp;</span><br><span class="line">      prevElement.key === nextElement.key</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="文本元素："><a href="#文本元素：" class="headerlink" title="文本元素："></a>文本元素：</h3><p>receiveComponent方法源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ReactDOMTextComponent.prototype.receiveComponent(nextText, transaction) &#123;</span><br><span class="line">	<span class="comment">//跟以前保存的字符串比较</span></span><br><span class="line">   <span class="keyword">if</span> (nextText !== <span class="keyword">this</span>._currentElement) &#123;</span><br><span class="line">     <span class="keyword">this</span>._currentElement = nextText;</span><br><span class="line">     <span class="keyword">var</span> nextStringText = <span class="string">''</span> + nextText;</span><br><span class="line">     <span class="keyword">if</span> (nextStringText !== <span class="keyword">this</span>._stringText) &#123;</span><br><span class="line">       <span class="keyword">this</span>._stringText = nextStringText;</span><br><span class="line">       <span class="keyword">var</span> commentNodes = <span class="keyword">this</span>.getHostNode();</span><br><span class="line">       <span class="comment">// 替换文本元素</span></span><br><span class="line">       DOMChildrenOperations.replaceDelimitedText(</span><br><span class="line">         commentNodes[<span class="number">0</span>],</span><br><span class="line">         commentNodes[<span class="number">1</span>],</span><br><span class="line">         nextStringText</span><br><span class="line">       );</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基本元素"><a href="#基本元素" class="headerlink" title="基本元素:"></a>基本元素:</h3><p>receiveComponent方法源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ReactDOMComponent.prototype.receiveComponent = <span class="function"><span class="keyword">function</span>(<span class="params">nextElement, transaction, context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> prevElement = <span class="keyword">this</span>._currentElement;</span><br><span class="line">    <span class="keyword">this</span>._currentElement = nextElement;</span><br><span class="line">    <span class="keyword">this</span>.updateComponent(transaction, prevElement, nextElement, context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>updateComponent方法源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ReactDOMComponent.prototype.updateComponent = <span class="function"><span class="keyword">function</span>(<span class="params">transaction, prevElement, nextElement, context</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 略.....</span></span><br><span class="line">	<span class="comment">//需要单独的更新属性</span></span><br><span class="line">    <span class="keyword">this</span>._updateDOMProperties(lastProps, nextProps, transaction, isCustomComponentTag);</span><br><span class="line">    <span class="comment">//再更新子节点</span></span><br><span class="line">    <span class="keyword">this</span>._updateDOMChildren(</span><br><span class="line">      lastProps,</span><br><span class="line">      nextProps,</span><br><span class="line">      transaction,</span><br><span class="line">      context</span><br><span class="line">    );</span><br><span class="line">	<span class="comment">// ......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>this._updateDOMChildren方法内部调用diff算法，请看下一节……..</p>
+<h2 id="react-Diff算法"><a href="#react-Diff算法" class="headerlink" title="react Diff算法"></a>react Diff算法</h2><p><img src="https://www.processon.com/chart_image/580c5968e4b02ecdf76ff820.png" alt="3"></p>
+<p>diff算法源码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">_updateChildren: <span class="function"><span class="keyword">function</span>(<span class="params">nextNestedChildrenElements, transaction, context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> prevChildren = <span class="keyword">this</span>._renderedChildren;</span><br><span class="line">  <span class="keyword">var</span> removedNodes = &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> mountImages = [];</span><br><span class="line">  <span class="comment">// 获取新的子元素数组</span></span><br><span class="line">  <span class="keyword">var</span> nextChildren = <span class="keyword">this</span>._reconcilerUpdateChildren(</span><br><span class="line">    prevChildren,</span><br><span class="line">    nextNestedChildrenElements,</span><br><span class="line">    mountImages,</span><br><span class="line">    removedNodes,</span><br><span class="line">    transaction,</span><br><span class="line">    context</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">if</span> (!nextChildren &amp;&amp; !prevChildren) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> updates = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> name;</span><br><span class="line">  <span class="keyword">var</span> nextIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> lastIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> nextMountIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> lastPlacedNode = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">for</span> (name <span class="keyword">in</span> nextChildren) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!nextChildren.hasOwnProperty(name)) &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> prevChild = prevChildren &amp;&amp; prevChildren[name];</span><br><span class="line">    <span class="keyword">var</span> nextChild = nextChildren[name];</span><br><span class="line">    <span class="keyword">if</span> (prevChild === nextChild) &#123;</span><br><span class="line">    	<span class="comment">// 同一个引用，说明是使用的同一个component,所以我们需要做移动的操作</span></span><br><span class="line">    	<span class="comment">// 移动已有的子节点</span></span><br><span class="line">    	<span class="comment">// NOTICE：这里根据nextIndex, lastIndex决定是否移动</span></span><br><span class="line">      updates = enqueue(</span><br><span class="line">        updates,</span><br><span class="line">        <span class="keyword">this</span>.moveChild(prevChild, lastPlacedNode, nextIndex, lastIndex)</span><br><span class="line">      );</span><br><span class="line">      <span class="comment">// 更新lastIndex</span></span><br><span class="line">      lastIndex = <span class="built_in">Math</span>.max(prevChild._mountIndex, lastIndex);</span><br><span class="line">      <span class="comment">// 更新component的.mountIndex属性</span></span><br><span class="line">      prevChild._mountIndex = nextIndex;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (prevChild) &#123;</span><br><span class="line">        <span class="comment">// 更新lastIndex</span></span><br><span class="line">        lastIndex = <span class="built_in">Math</span>.max(prevChild._mountIndex, lastIndex);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 添加新的子节点在指定的位置上</span></span><br><span class="line">      updates = enqueue(</span><br><span class="line">        updates,</span><br><span class="line">        <span class="keyword">this</span>._mountChildAtIndex(</span><br><span class="line">          nextChild,</span><br><span class="line">          mountImages[nextMountIndex],</span><br><span class="line">          lastPlacedNode,</span><br><span class="line">          nextIndex,</span><br><span class="line">          transaction,</span><br><span class="line">          context</span><br><span class="line">        )</span><br><span class="line">      );</span><br><span class="line">      nextMountIndex++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 更新nextIndex</span></span><br><span class="line">    nextIndex++;</span><br><span class="line">    lastPlacedNode = ReactReconciler.getHostNode(nextChild);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 移除掉不存在的旧子节点，和旧子节点和新子节点不同的旧子节点</span></span><br><span class="line">  <span class="keyword">for</span> (name <span class="keyword">in</span> removedNodes) &#123;</span><br><span class="line">    <span class="keyword">if</span> (removedNodes.hasOwnProperty(name)) &#123;</span><br><span class="line">      updates = enqueue(</span><br><span class="line">        updates,</span><br><span class="line">        <span class="keyword">this</span>._unmountChild(prevChildren[name], removedNodes[name])</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="react的优点与总结"><a href="#react的优点与总结" class="headerlink" title="react的优点与总结"></a>react的优点与总结</h2><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>虚拟节点。在UI方面，不需要立刻更新视图，而是生成虚拟DOM后统一渲染。</li>
+<li>组件机制。各个组件独立管理,层层嵌套，互不影响，react内部实现的渲染功能。</li>
+<li>差异算法。根据基本元素的key值，判断是否递归更新子节点，还是删除旧节点，添加新节点。</li>
+</ul>
+<p>##总结</p>
+<p>想要更好的利用react的虚拟DOM，diff算法的优势，我们需要正确的优化、组织react页面。例如将一个页面render的ReactElement节点分解成多个组件。在需要优化的组件手动添加 shouldComponentUpdate 来避免不需要的 re-render。</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/08/06/9532/" class="pre-post btn btn-default" title='React Diff'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">React Diff</span>
+        </a>
+    
+    
+        <a href="/2018/08/04/9530/" class="next-post btn btn-default" title='React Fiber初探'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">React Fiber初探</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#理解ReactElement和ReactClass的概念"><span class="toc-text">理解ReactElement和ReactClass的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ReactElement"><span class="toc-text">ReactElement</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ReactClass"><span class="toc-text">ReactClass</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#react渲染过程"><span class="toc-text">react渲染过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#react更新机制"><span class="toc-text">react更新机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步：调用this-setState"><span class="toc-text">第一步：调用this.setState</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步：调用内部receiveComponent方法"><span class="toc-text">第二步：调用内部receiveComponent方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义元素："><span class="toc-text">自定义元素：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本元素："><span class="toc-text">文本元素：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本元素"><span class="toc-text">基本元素:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#react-Diff算法"><span class="toc-text">react Diff算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#react的优点与总结"><span class="toc-text">react的优点与总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

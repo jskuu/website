@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>Object.prototype.toString 不行了 | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Object.prototype.toString 不行了">
+            
+	            Object.prototype.toString 不行了
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/08/07</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>一般判断一个变量是否是 对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPlainObject</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj, <span class="literal">null</span>) === <span class="string">'[object Object]'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这样是不严谨的 为什么呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(a, <span class="literal">null</span>) === <span class="string">'[object Object]'</span><span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">a[<span class="built_in">Symbol</span>.toStringTag] = <span class="string">'Custom'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(a, <span class="literal">null</span>) === <span class="string">'[object Custom]'</span><span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>1、lodash 会检查对象是否有 Symbol.toStringTag 属性，有的话会尝试把它置为 undefined 再toString （这也是lodash代码最长的原因……），对于被 freeze 的对象就无能为力了<br>2、 jquery3 其实还要求[[Prototype]] hasOwnProperty(“constructor”)，放上面太长了所以放在这了……<br>3、 jquery3 的”类似Object函数”指的是 Function.prototype.toString.call(Ctor) === Function.prototype.toString.call(Object)，之所以不用 Ctor === Obj 是因为这个对象可能来自别的执行环境（如浏览器中的同域iframe、Node的vm、目前Stage2的Realm等等）</p>
+<p>redux的实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">isPlainObject</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> obj !== <span class="string">'object'</span> || obj === <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> proto = obj</span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">Object</span>.getPrototypeOf(proto) !== <span class="literal">null</span>) &#123;</span><br><span class="line">    proto = <span class="built_in">Object</span>.getPrototypeOf(proto)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.getPrototypeOf(obj) === proto</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>jquery 实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> toString = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line"><span class="keyword">const</span> fnToString = <span class="built_in">Function</span>.prototype.toString;</span><br><span class="line"><span class="keyword">const</span> ObjectFunctionString = fnToString.call(<span class="built_in">Object</span>);</span><br><span class="line"><span class="keyword">const</span> toString = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line">isPlainObject: <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> proto, Ctor;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Detect obvious negatives</span></span><br><span class="line">    <span class="comment">// Use toString instead of jQuery.type to catch host objects</span></span><br><span class="line">    <span class="keyword">if</span> (!obj || toString.call(obj) !== <span class="string">"[object Object]"</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    proto = <span class="built_in">Object</span>.getPrototypeOf(obj);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Objects with no prototype (e.g., `Object.create( null )`) are plain</span></span><br><span class="line">    <span class="keyword">if</span> (!proto) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Objects with prototype are plain iff they were constructed by a global Object function</span></span><br><span class="line">    Ctor = <span class="built_in">Object</span>.prototype.hasOwnProperty.call(proto, <span class="string">"constructor"</span>) &amp;&amp; proto.constructor;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> Ctor === <span class="string">"function"</span> &amp;&amp; fnToString.call(Ctor) === ObjectFunctionString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>lodash 实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> objectProto = <span class="built_in">Object</span>.prototype</span><br><span class="line"><span class="keyword">const</span> hasOwnProperty = objectProto.hasOwnProperty</span><br><span class="line"><span class="keyword">const</span> toString = objectProto.toString</span><br><span class="line"><span class="keyword">const</span> symToStringTag = <span class="keyword">typeof</span> <span class="built_in">Symbol</span> != <span class="string">'undefined'</span> ? <span class="built_in">Symbol</span>.toStringTag : <span class="literal">undefined</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">baseGetTag</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (value == <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> value === <span class="literal">undefined</span> ? <span class="string">'[object Undefined]'</span> : <span class="string">'[object Null]'</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!(symToStringTag &amp;&amp; symToStringTag <span class="keyword">in</span> <span class="built_in">Object</span>(value))) &#123;</span><br><span class="line">    <span class="keyword">return</span> toString.call(value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> isOwn = hasOwnProperty.call(value, symToStringTag)</span><br><span class="line">  <span class="keyword">const</span> tag = value[symToStringTag]</span><br><span class="line">  <span class="keyword">let</span> unmasked = <span class="literal">false</span></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    value[symToStringTag] = <span class="literal">undefined</span></span><br><span class="line">    unmasked = <span class="literal">true</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> result = toString.call(value)</span><br><span class="line">  <span class="keyword">if</span> (unmasked) &#123;</span><br><span class="line">    <span class="keyword">if</span> (isOwn) &#123;</span><br><span class="line">      value[symToStringTag] = tag</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">delete</span> value[symToStringTag]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPlainObject</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!(<span class="keyword">typeof</span> value == <span class="string">'object'</span> &amp;&amp; value !== <span class="literal">null</span>) || baseGetTag(value) != <span class="string">'[object Object]'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Object</span>.getPrototypeOf(value) === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> proto = value</span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">Object</span>.getPrototypeOf(proto) !== <span class="literal">null</span>) &#123;</span><br><span class="line">    proto = <span class="built_in">Object</span>.getPrototypeOf(proto)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.getPrototypeOf(value) === proto</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/08/07/9543/" class="pre-post btn btn-default" title='防抖与节流'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">防抖与节流</span>
+        </a>
+    
+    
+        <a href="/2018/08/07/9541/" class="next-post btn btn-default" title='prototype, getPrototypeOf 和__proto__'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">prototype, getPrototypeOf 和__proto__</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

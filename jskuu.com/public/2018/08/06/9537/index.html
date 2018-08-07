@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>ReactDOM 全面解析 | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="ReactDOM 全面解析">
+            
+	            ReactDOM 全面解析
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/08/06</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>该文章将粗略介绍react-dom 里面全局方法的含义和 示例</p>
+<h2 id="1-createPortal"><a href="#1-createPortal" class="headerlink" title="1.createPortal"></a>1.createPortal</h2><p>新增了一个顶级 API: ReactDOM.createPortal</p>
+<ul>
+<li>Portal 本身不是新的概念，在以往使用 React 实现模态框等组件时我们也会用到，现在 React 官方提供了 API 使得能够更方便地实现这样的功能。</li>
+<li>在一般的 React 结构中，组件的嵌套关系和渲染出来的 DOM 的嵌套关系是一致的（子组件渲染出的 DOM 一定是在父组件渲染出的 DOM 的内部的）。</li>
+<li>但某些情况下，这样的限制会导致问题，例如实现一个模态框（Modal），虽然模态框所在的组件在它的父组件内部，但是通常需要被渲染在 body 元素下。 新的 API 使用方式如下：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="comment">// React 会在你提供的 domNode 下渲染，而不是在当前组件所在的 DOM</span></span><br><span class="line">  <span class="keyword">return</span> ReactDOM.createPortal(</span><br><span class="line">    <span class="keyword">this</span>.props.children,</span><br><span class="line">    domNode,</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Portals-事件冒泡"><a href="#Portals-事件冒泡" class="headerlink" title="Portals 事件冒泡"></a>Portals 事件冒泡</h3><p>尽管使用 Portals 渲染的元素在 DOM 中的位置脱离了 ParentComponent 元素的 DOM 树结构，但是，使用 Portals 渲染的元素仍然会触发到其组件结构层次上的事件冒泡：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;ParentComponent onClick=&#123;() =&gt; <span class="built_in">console</span>.log(<span class="string">'click bubbled!'</span>)&#125;&gt;</span><br><span class="line">  &lt;ModalComponent&gt;</span><br><span class="line">    <span class="comment">// modal text</span></span><br><span class="line">  &lt;<span class="regexp">/ModalComponent&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>ParentComponent&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// click modal</span></span><br><span class="line"><span class="comment">// log: click bubbled!</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://codepen.io/gaearon/pen/jGBWpE" target="_blank" rel="noopener">示例</a></p>
+<h2 id="2-findDOMNode"><a href="#2-findDOMNode" class="headerlink" title="2.findDOMNode"></a>2.findDOMNode</h2><p>DOMElement findDOMNode(ReactComponent)</p>
+<p><img src="https://sfault-image.b0.upaiyun.com/128/907/1289076060-59aa550e83095_articlex" alt="3"><br>这玩意 类似于 ref 但是又不一样</p>
+<p><a href="https://codepen.io/1617634/pen/JBapQY?editors=0012" target="_blank" rel="noopener">示例</a></p>
+<ul>
+<li><p>并不是组件中的任何地方都能够使用findDOMNode获取DOM结构，findDOMNode只对挂载后的组件生效。</p>
+</li>
+<li><p>如果组件的render函数返回null，则在任何地方使用findDOMNode的结果都是null。</p>
+</li>
+<li><p>findDOMNode不能用在函数式组件中</p>
+</li>
+</ul>
+<h2 id="3-hydrate"><a href="#3-hydrate" class="headerlink" title="3.hydrate"></a>3.hydrate</h2><p>该方法 为ssr 提供的</p>
+<p>hydrate理解成给干瘪的字符串”注水”</p>
+<p><img src="https://pic4.zhimg.com/80/v2-3008f0991ca9df839f07810dc628b7c3_hd.jpg" alt="5"><br>因为ssr时服务器输出的是字符串，而浏览器端需要根据这些字符串完成react的初始化工作，比如创建组件实例，这样才能响应用户操作。这个过程就叫hydrate，有时候也会说re-hydrate</p>
+<p>hydrate就是“注水”，一个完整的网页可以看成是干货掺了水的结果，纯数据只是干巴巴的干货，不是给人看的，但是“注水”之后，变成可以展示的HTML，就变成浏览器可以解释用户能看的东西了，这过程就是hydrate。还有两个词，dehydrate和rehydrate，dehydrate是“脱水”，一般指的是服务器端渲染的时候，准备纯数据的过程，这些数据随HTML一起发给浏览器，因为React需要用这些数据重新渲染一遍（v16之前是这样），在浏览器端，根据这些数据重新渲染一遍的过程，就叫做rehydrate。</p>
+<p>惯例先上 React 15 的入口文件实现。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> render = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> container = <span class="built_in">document</span>.querySelector(<span class="string">"#app"</span>);</span><br><span class="line">  <span class="keyword">const</span> element = &lt;App /&gt;;</span><br><span class="line">  ReactDOM.render(element, container);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>render();<br>在 React 15 中，在客户端内，可以使用跟普通 client rendering 一致的 ReactDOM.render(…) 方法，基于 server rendering 输出的 html 来渲染 React 组件。</p>
+<p>在 React 15 中，是否复用 server rendering 创建的 DOM 元素，是根据 [data-reactroot] 元素上的 data-react-checksum 属性与前端渲染内容的 checksum 是否一致这个条件来判断的1。即：只有完全复用和完全不复用两种情况。</p>
+<p>在 React 16 中，新增加了 ReactDOM.hydrate(…) 这个方法2，把与 server rendering 相关的处理从 ReactDOM.render(…) 中拆分了出来。</p>
+<p>不像 React 15 中的 ReactDOM.render(…)，ReactDOM.hydrate(…) 总是会去尝试复用 DOM，而不再关心 checksum 是否相等3。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> render = <span class="function">(<span class="params">hydrate = <span class="literal">false</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> container = <span class="built_in">document</span>.querySelector(<span class="string">"#app"</span>);</span><br><span class="line">  <span class="keyword">const</span> element = &lt;App /&gt;;</span><br><span class="line">  if (hydrate) &#123;</span><br><span class="line">    ReactDOM.hydrate(element, container);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    ReactDOM.render(element, container);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">render(true);</span><br></pre></td></tr></table></figure>
+<h2 id="4-render"><a href="#4-render" class="headerlink" title="4.render"></a>4.render</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(</span><br><span class="line">    ReactComponent,</span><br><span class="line">      DOMElement,</span><br><span class="line">      [callback]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>这个方法只会进行一次整体更新</p>
+</li>
+<li><p>第一次渲染后，会将DOMElement的innerHTML用ReactComponent的实例所替换，之后的渲染，便采用高效的diff算法进行更新。</p>
+</li>
+</ul>
+<p>该方法有返回值，且是同步返回 返回值就是我们的根组件的实例<br>但是不推荐这么拿 推荐方法是添加一个 callback ref 到根元素上</p>
+<h2 id="5-unstable-renderSubtreeIntoContainer"><a href="#5-unstable-renderSubtreeIntoContainer" class="headerlink" title="5.unstable_renderSubtreeIntoContainer"></a>5.unstable_renderSubtreeIntoContainer</h2><p>该方法在16版本 被 createPortal替代  需要使用 ReactDOM.unmountComponentAtNode 清理副作用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.unstable_renderSubtreeIntoContainer(parent, component, dom)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    appendMaskIntoDoc() &#123;</span><br><span class="line">        ReactDOM.unstable_renderSubtreeIntoContainer(</span><br><span class="line">            <span class="keyword">this</span>,</span><br><span class="line">            &lt;Modal &#123;...this.props&#125;&gt;</span><br><span class="line">                &#123;<span class="keyword">this</span>.props.children&#125;</span><br><span class="line">            &lt;<span class="regexp">/Modal&gt;,</span></span><br><span class="line"><span class="regexp">            this.container</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    componentDidMount() &#123;</span></span><br><span class="line"><span class="regexp">        this.container = document.createElement('div')</span></span><br><span class="line"><span class="regexp">        document.body.appendChild(this.container)</span></span><br><span class="line"><span class="regexp">        this.appendMaskIntoDoc()</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    componentDidUpdate() &#123;</span></span><br><span class="line"><span class="regexp">        this.appendMaskIntoDoc()</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    componentWillUnmount() &#123;</span></span><br><span class="line"><span class="regexp">        document.body.removeChild(this.container)</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    render() &#123;</span></span><br><span class="line"><span class="regexp">        return null</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-unmountComponentAtNode"><a href="#6-unmountComponentAtNode" class="headerlink" title="6.unmountComponentAtNode"></a>6.unmountComponentAtNode</h2><p>意思就是，从DOM元素中卸载已经挂载的组件，除此呢，还会清除它的事件处理器和state。来，看下面的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;findDOMNode, render, unmountComponentAtNode&#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FieldOne</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'%c FieldOne will unmount'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> &lt;div&gt;The One&lt;/div&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FieldTwo</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'%c FieldTwo will unmount'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> &lt;div&gt;The Two&lt;/div&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        render(&lt;FieldOne /&gt;, this.fieldOne)</span><br><span class="line">    &#125;</span><br><span class="line">    handleClick() &#123;</span><br><span class="line">        console.log(unmountComponentAtNode(this.fieldOne))</span><br><span class="line">        console.log(unmountComponentAtNode(this.fieldTwo))</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;div className="container"&gt;</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                    &lt;button onClick=&#123;this.handleClick.bind(this)&#125;&gt;REMOVE COMPONENT&lt;/button&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">               &lt;div ref=&#123;fieldOne =&gt; this.fieldOne = fieldOne&#125;&gt;&lt;/div&gt;</span><br><span class="line">               &lt;div ref=&#123;fieldTwo =&gt; this.fieldTwo = fieldTwo&#125;&gt;</span><br><span class="line">                    &lt;FieldTwo /&gt;</span><br><span class="line">               &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">render(&lt;App /&gt;, document.getElementById('root'))</span><br></pre></td></tr></table></figure>
+<p>简单的分析这段代码之前，先扯一个小的问题。react中的组件渲染有几种方式？一般来说，两种：</p>
+<ul>
+<li><p>通过下面render函数，将组件渲染到DOM结构中。</p>
+</li>
+<li><p>由React自身渲染</p>
+</li>
+</ul>
+<p>这两种渲染方式，分别对应于上述代码中的FieldOne和FieldTwo组件的渲染方式。所以，你必须先搞明白一件事情，unmountComponentAtNode并不能卸载所有已经挂载到DOM中的组件，它只能卸载通过render函数渲染的组件。</p>
+<p>所以，当我们点击button按钮的时候，会在控制台中看到，下面这些东西。</p>
+<p><img src="https://sfault-image.b0.upaiyun.com/397/114/3971140145-59aa56231b2a6_articlex" alt="1"></p>
+<p>其中，当unmountComponentAtNode的返回值为true的时候，表示卸载成功。反之，则表示卸载失败。<br>下面是点击按钮之前的DOM结构的对比情况。<br>点击前</p>
+<p><img src="https://sfault-image.b0.upaiyun.com/424/760/4247603901-59aa571ad8d81_articlex" alt="2"></p>
+<p>点击后</p>
+<p><img src="https://sfault-image.b0.upaiyun.com/316/109/3161093148-59aa5735ae36d_articlex" alt="4"></p>
+<h2 id="7-unstable-createPortal"><a href="#7-unstable-createPortal" class="headerlink" title="7.unstable_createPortal"></a>7.unstable_createPortal</h2><p>ReactDOM.createPortal 的前身</p>
+<p>unstable_renderSubtreeIntoContainer 被改名到 unstable_createPortal </p>
+<p>16被改成ReactDOM.createPortal</p>
+<h2 id="8-unstable-batchedUpdates"><a href="#8-unstable-batchedUpdates" class="headerlink" title="8.unstable_batchedUpdates"></a>8.unstable_batchedUpdates</h2><p>批量更新</p>
+<p>setTimeout 里的两次 setState 导致两次 render 的情况，React 偷偷给我们暴露了一个 batchedUpdates 方法，方便我们调用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ReactDom, &#123; unstable_batchedUpdates &#125; <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"></span><br><span class="line">unstable_batchedUpdates(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">this</span>.setState(val: <span class="keyword">this</span>.state.val + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">this</span>.setState(val: <span class="keyword">this</span>.state.val + <span class="number">1</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="9-unstable-deferredUpdates"><a href="#9-unstable-deferredUpdates" class="headerlink" title="9.unstable_deferredUpdates"></a>9.unstable_deferredUpdates</h2><p>v17预设会变成非同步rendering。v16时似乎也会将一些API改为预设，如想尝鲜可使用ReactDOM.unstable_deferredUpdates试试</p>
+<h3 id="v16尝试非同步rendering懒人包"><a href="#v16尝试非同步rendering懒人包" class="headerlink" title="v16尝试非同步rendering懒人包"></a>v16尝试非同步rendering懒人包</h3><ul>
+<li><p>因为现在ReactDOMFeatureFlags有fiberAsyncScheduling这个flag，如果将它hard-coded预设为true的话就能做非同步rendering了。但因为这样的做法还没有写测试，我想应该还会有些bug。</p>
+</li>
+<li><p>或是利用ReactDOM.unstable_deferredUpdates并在其中以lowPriority来执行，就能变成非同步了。</p>
+</li>
+</ul>
+<h2 id="10-unstable-interactiveUpdates"><a href="#10-unstable-interactiveUpdates" class="headerlink" title="10.unstable_interactiveUpdates"></a>10.unstable_interactiveUpdates</h2><p> 交互作用期</p>
+<p> 16.4.1 加入的 具体功效<br> baidu 没有<br> google 不详</p>
+<h2 id="11-flushSync"><a href="#11-flushSync" class="headerlink" title="11.flushSync"></a>11.flushSync</h2><p>刷新同步<br>有点模糊</p>
+<p>解决组件多次渲染的问题</p>
+<p>我不希望这种情况发生改变，但我想知道是否还有其他方法来保证DOM为这些隔离的渲染上下文同步地绘制。我一直在阅读ReaToM.FLUSSYNC的一些源代码，以及一些其他方法来控制如何响应16批处理的渲染/协调；是否有任何钩子允许控制在特定情况下如何执行ReaDCT DOM渲染？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.flushSync(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(<span class="function"><span class="params">()</span> =&gt;</span> newState);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setState(newState)</span><br><span class="line"><span class="comment">// ↓↓↓</span></span><br><span class="line"><span class="keyword">this</span>.setState(<span class="function"><span class="params">prevState</span> =&gt;</span> newState);</span><br></pre></td></tr></table></figure>
+<h2 id="12-unstable-flushControlled"><a href="#12-unstable-flushControlled" class="headerlink" title="12.unstable_flushControlled"></a>12.unstable_flushControlled</h2><p>不太懂</p>
+<ul>
+<li>Only useful for things like Draft that need to wrap event handlers.</li>
+</ul>
+<p>译：只适用于需要草稿事件处理程序的草稿之类的东西。</p>
+<h2 id="13-SECRET-INTERNALS-DO-NOT-USE-OR-YOU-WILL-BE-FIRED"><a href="#13-SECRET-INTERNALS-DO-NOT-USE-OR-YOU-WILL-BE-FIRED" class="headerlink" title="13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED"></a>13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED</h2><h2 id="14-unstable-createRoot"><a href="#14-unstable-createRoot" class="headerlink" title="14.unstable_createRoot"></a>14.unstable_createRoot</h2><p>不太懂</p>
+<ul>
+<li>Only useful for pre-rendering via createBatch. Not quite ready to make this API stable.</li>
+<li>Also enables async-mode for all children and the root.</li>
+</ul>
+<p>译： 仅用于通过CeaTeBar进行预渲染。还没有准备好让这个API稳定。</p>
+<p>还可以为所有的子和根启用异步模式。</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/08/06/9538/" class="pre-post btn btn-default" title='玩转git'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">玩转git</span>
+        </a>
+    
+    
+        <a href="/2018/08/06/9536/" class="next-post btn btn-default" title='React 全面解析'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">React 全面解析</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-createPortal"><span class="toc-text">1.createPortal</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Portals-事件冒泡"><span class="toc-text">Portals 事件冒泡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-findDOMNode"><span class="toc-text">2.findDOMNode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-hydrate"><span class="toc-text">3.hydrate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-render"><span class="toc-text">4.render</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-unstable-renderSubtreeIntoContainer"><span class="toc-text">5.unstable_renderSubtreeIntoContainer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-unmountComponentAtNode"><span class="toc-text">6.unmountComponentAtNode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-unstable-createPortal"><span class="toc-text">7.unstable_createPortal</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-unstable-batchedUpdates"><span class="toc-text">8.unstable_batchedUpdates</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-unstable-deferredUpdates"><span class="toc-text">9.unstable_deferredUpdates</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#v16尝试非同步rendering懒人包"><span class="toc-text">v16尝试非同步rendering懒人包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-unstable-interactiveUpdates"><span class="toc-text">10.unstable_interactiveUpdates</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-flushSync"><span class="toc-text">11.flushSync</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-unstable-flushControlled"><span class="toc-text">12.unstable_flushControlled</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-SECRET-INTERNALS-DO-NOT-USE-OR-YOU-WILL-BE-FIRED"><span class="toc-text">13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-unstable-createRoot"><span class="toc-text">14.unstable_createRoot</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

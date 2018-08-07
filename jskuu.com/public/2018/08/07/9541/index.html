@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>prototype, getPrototypeOf 和__proto__ | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="prototype, getPrototypeOf 和__proto__">
+            
+	            prototype, getPrototypeOf 和__proto__
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/08/07</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>转自：<a href="https://blog.csdn.net/i10630226/article/details/49300329" target="_blank" rel="noopener">https://blog.csdn.net/i10630226/article/details/49300329</a></p>
+<h2 id="1、深入理解prototype-getPrototypeOf和-proto"><a href="#1、深入理解prototype-getPrototypeOf和-proto" class="headerlink" title="1、深入理解prototype, getPrototypeOf和_ proto _"></a>1、深入理解prototype, getPrototypeOf和_ proto _</h2><p>prototype，getPropertyOf和 _ proto _ 是三个用来访问prototype的方法。它们的命名方式很类似因此很容易带来困惑。</p>
+<p>它们的使用方式如下：</p>
+<ul>
+<li><p>C.prototype: 一般用来为一个类型建立它的原型继承对象。比如C.prototype = xxx，这样就会让使用new C()得到的对象的原型对象为xxx。当然使用obj.prototype也能够得到obj的原型对象。</p>
+</li>
+<li><p>getPropertyOf: Object.getPropertyOf(obj)是ES5中用来得到obj对象的原型对象的标准方法。</p>
+</li>
+<li><p>_ proto <em>: obj.</em> proto _是一个非标准的用来得到obj对象的原型对象的方法。</p>
+</li>
+</ul>
+<p>为了充分了解获取原型的各种方式，以下是一个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.name = name;  </span><br><span class="line">    <span class="keyword">this</span>.passwordHash = passwordHash;  </span><br><span class="line">&#125;  </span><br><span class="line">User.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> <span class="string">"[User "</span> + <span class="keyword">this</span>.name + <span class="string">"]"</span>;  </span><br><span class="line">&#125;;  </span><br><span class="line">User.prototype.checkPassword = <span class="function"><span class="keyword">function</span>(<span class="params">password</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> hash(password) === <span class="keyword">this</span>.passwordHash;  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="keyword">var</span> u = <span class="keyword">new</span> User(<span class="string">"sfalken"</span>, <span class="string">"0ef33ae791068ec64b502d6cb0191387"</span>);</span><br></pre></td></tr></table></figure>
+<p>User函数拥有一个默认的prototype属性，该属性的值是一个空对象。在以上的例子中，向prototype对象添加了两个方法，分别是toString和checkPassword。当调用User构造函数得到一个新的对象u时，它的原型对象会被自动赋值到User.prototype对象。即u.prototype === User.prototype会返回true。</p>
+<p>User函数，User.prototype，对象u之间的关系可以表示如下：</p>
+<p><img src="https://img-blog.csdn.net/20151021100052514" alt="1"></p>
+<p>上图中的箭头表示的是继承关系。当访问u对象的某些属性时，会首先尝试读取u对象上的属性，如果u对象上并没有这个属性，就会查找其原型对象。</p>
+<p>比如当调用u.checkPassword()时，因为checkPassword定义在其原型对象上，所以在u对象上找不到该属性，就在u的原型上查找，查找顺序是u-&gt; u.prototype（User.prototype）。</p>
+<p>前面提到过，getPrototypeOf方法是ES5中用来得到某个对象的原型对象的标准方法。因此：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getPrototypeOf(u) === User.prototype; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>在一些环境中，同时提供了一个非标准的_ proto _ 属性用来得到某个对象的原型对象。当环境不提供ES5的标准方法getPrototypeOf方法时，可以暂时使用该属性作为替代。可以使用下面的代码测试环境中是否支持_ proto _：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u.__ proto __ === User.prototype; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>所以在JavaScript中，<code>类的概念是由构造函数(User)和用于实例间共享方法的原型对象（User.prototype）共同完成的</code>。构造函数中负责构造每个对象特有的属性，比如上述例子中的name和password属性。而其原型对象中负责存放所有对象共有的属性，比如上述例子中的checkPassword和toString方法。就像下面这张图表示的那样：</p>
+<p><img src="https://img-blog.csdn.net/20151021100504021" alt="2"></p>
+<h2 id="2、获取对象优先使用Object-getPrototypeOf，而不是-proto"><a href="#2、获取对象优先使用Object-getPrototypeOf，而不是-proto" class="headerlink" title="2、获取对象优先使用Object.getPrototypeOf，而不是_ proto _"></a>2、获取对象优先使用Object.getPrototypeOf，而不是_ proto _</h2><p>在ES5中引入了Object.getPrototypeOf作为获取对象原型对象的标准API。但是在很多执行环境中，也提供了一个特殊的_ proto _属性来达到同样的目的。</p>
+<p>因为并不是所有的环境都提供了这个_ proto _属性，且每个环境的实现方式各不相同，因此一些结果可能不一致,例如，对于拥有null原型的对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在某些环境中  </span></span><br><span class="line"><span class="keyword">var</span> empty = <span class="built_in">Object</span>.create(<span class="literal">null</span>); <span class="comment">// object with no prototype  </span></span><br><span class="line"><span class="string">"_proto _"</span> <span class="keyword">in</span> empty; <span class="comment">// false (in some environments)  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在某些环境中  </span></span><br><span class="line"><span class="keyword">var</span> empty = <span class="built_in">Object</span>.create(<span class="literal">null</span>); <span class="comment">// object with no prototype  </span></span><br><span class="line"><span class="string">"_proto_"</span> <span class="keyword">in</span> empty; <span class="comment">// true (in some environments)</span></span><br></pre></td></tr></table></figure>
+<p>所以当环境中支持Object.getPrototypeOf方法时，优先使用它。即使不支持，也可以为了实现一个：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Object</span>.getPrototypeOf === <span class="string">"undefined"</span>) &#123;  </span><br><span class="line">    <span class="built_in">Object</span>.getPrototypeOf = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;  </span><br><span class="line">        <span class="keyword">var</span> t = <span class="keyword">typeof</span> obj;  </span><br><span class="line">        <span class="keyword">if</span> (!obj || (t !== <span class="string">"object"</span> &amp;&amp; t !== <span class="string">"function"</span>)) &#123;  </span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">"not an object"</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> obj._proto_;  </span><br><span class="line">    &#125;;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码首先会对当前环境进行检查，如果已经支持了Object.getPrototypeOf，就不会再重复定义。</p>
+<h2 id="3、绝不要修改-proto"><a href="#3、绝不要修改-proto" class="headerlink" title="3、绝不要修改_ proto _"></a>3、绝不要修改_ proto _</h2><p>和Object.getPrototypeOf相比，_ proto _的特殊之处还体现在它能够修改一个对象的原型继承链。因为它是一个属性，除了执行获取它的操作外，还能够对它进行设置。</p>
+<p>但是，绝不要修改_ proto _。原因如下：</p>
+<ul>
+<li><p>首先，最显而易见的原因就是便携性。因为不是所有的JavaScript执行环境都支持这一属性，所以使用了_ proto _ 之后，代码就不能在那些不支持_ proto _的环境中运行了。</p>
+</li>
+<li><p>其次，是性能上的考虑。现在的JavaScript引擎的实现都会针对对象属性的存取作出大量的优化，因为这些操作是最常用的。当修改了对象的_ proto _后，就相当于修改了对象的整个继承结构，这样做回导致很多优化都不再可用。</p>
+</li>
+<li><p>最后，最重要的原因是需要保证程序的可靠性。因为改变_ proto _属性后，对象的原型继承链也许会被完全地改变。当程序中有其他代码依赖于原来的继承链时，就会出现不可意料的错误。通常而言，原型继承链需要保持稳定。</p>
+</li>
+</ul>
+<p>当需要为一个新创建的对象赋予一个原型对象时，可以使用ES5提供的Object.create方法。对于未实现ES5标准的环境，可以给出来一个不依赖于_ proto _的Object.create方法的实现。</p>
+<h2 id="4、解决-proto-兼容问题，-让构造函数不再依赖new关键字"><a href="#4、解决-proto-兼容问题，-让构造函数不再依赖new关键字" class="headerlink" title="4、解决 _ proto _兼容问题， 让构造函数不再依赖new关键字"></a>4、解决 _ proto _兼容问题， 让构造函数不再依赖new关键字</h2><p>在将function当做构造函数使用时，需要确保该函数是通过new关键字进行调用的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">this</span>.name = name;  </span><br><span class="line">    <span class="keyword">this</span>.passwordHash = passwordHash;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果在调用上述构造函数时，忘记了使用new关键字，那么：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> u = User(<span class="string">"baravelli"</span>, <span class="string">"d8b74df393528d51cd19980ae0aa028e"</span>);  </span><br><span class="line">u; <span class="comment">// undefined  </span></span><br><span class="line"><span class="keyword">this</span>.name; <span class="comment">// "baravelli"  </span></span><br><span class="line"><span class="keyword">this</span>.passwordHash; <span class="comment">// "d8b74df393528d51cd19980ae0aa028e"</span></span><br></pre></td></tr></table></figure>
+<p>可以发现得到的u是undefined，而this.name以及this.passwordHash则被赋了值。但是这里的this指向的则是全局对象。</p>
+<p>如果将构造函数声明为依赖于strict模式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;  </span><br><span class="line"><span class="meta">    "use strict"</span>;  </span><br><span class="line">    <span class="keyword">this</span>.name = name;  </span><br><span class="line">    <span class="keyword">this</span>.passwordHash = passwordHash;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">var</span> u = User(<span class="string">"baravelli"</span>, <span class="string">"d8b74df393528d51cd19980ae0aa028e"</span>);  </span><br><span class="line"><span class="comment">// error: this is undefined</span></span><br></pre></td></tr></table></figure>
+<p>那么在忘记使用new关键字的时候，在调用this.name= name的时候会抛出TypeError错误。这是因为在strict模式下，this的默认指向会被设置为undefined而不是全局对象。</p>
+<p>那么，是否有种方法能够保证在调用一个函数时，无论使用了new关键字与否，该函数都能够被当做构造函数呢？下面的代码是一种实现方式，使用了instanceof操作：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> User)) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> User(name, passwordHash);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">this</span>.name = name;  </span><br><span class="line">    <span class="keyword">this</span>.passwordHash = passwordHash;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = User(<span class="string">"baravelli"</span>, <span class="string">"d8b74df393528d51cd19980ae0aa028e"</span>);  </span><br><span class="line"><span class="keyword">var</span> y = <span class="keyword">new</span> User(<span class="string">"baravelli"</span>, <span class="string">"d8b74df393528d51cd19980ae0aa028e"</span>);  </span><br><span class="line">x <span class="keyword">instanceof</span> User; <span class="comment">// true  </span></span><br><span class="line">y <span class="keyword">instanceof</span> User; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>以上的if代码块就是用来处理没有使用new进行调用的情况的。当没有使用new时，this的指向并不是一个User的实例，而在使用了new关键字时，this的指向是一个User类型的实例。</p>
+<p>另一个更加适合在ES5环境中使用的实现方式如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span> <span class="keyword">instanceof</span> User ? <span class="keyword">this</span> : <span class="built_in">Object</span>.create(User.prototype);  </span><br><span class="line">    self.name = name;  </span><br><span class="line">    self.passwordHash = passwordHash;  </span><br><span class="line">    <span class="keyword">return</span> self;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Object.create方法是ES5提供的方法，它能够接受一个对象作为新创建对象的prototype。那么在非ES5环境中，就需要首先实现一个Object.create方法：</p>
+<p>实际上，Object.create方法还有接受第二个参数的版本，第二个参数表示的是在新创建对象上赋予的一系列属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Object</span>.create === <span class="string">"undefined"</span>) &#123;  </span><br><span class="line">    <span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">prototype</span>) </span>&#123;  </span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">C</span>(<span class="params"></span>) </span>&#123; &#125;  </span><br><span class="line">        C.prototype = prototype;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> C();  </span><br><span class="line">    &#125;;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当上述的函数确实使用了new进行调用时，也能够正确地得到返回的新建对象。这得益于构造器覆盖模式(Constructor Override Pattern)。该模式的含义是：使用了new关键字的表达式的返回值能够被一个显式的return覆盖。正如以上代码中使用了return self来显式定义了返回值。</p>
+<p>当然，以上的工作在某些情况下也不是必要的。但是，当一个函数是需要被当做构造函数进行调用时，必须对它进行说明，使用文档是一种方式，将函数的命名使用首字母大写的方式也是一种方式(基于JavaScript语言的一些约定俗成)。</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/08/07/9542/" class="pre-post btn btn-default" title='Object.prototype.toString 不行了'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Object.prototype.toString 不行了</span>
+        </a>
+    
+    
+        <a href="/2018/08/06/9540/" class="next-post btn btn-default" title='React.Component'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">React.Component</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、深入理解prototype-getPrototypeOf和-proto"><span class="toc-text">1、深入理解prototype, getPrototypeOf和_ proto _</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、获取对象优先使用Object-getPrototypeOf，而不是-proto"><span class="toc-text">2、获取对象优先使用Object.getPrototypeOf，而不是_ proto _</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、绝不要修改-proto"><span class="toc-text">3、绝不要修改_ proto _</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、解决-proto-兼容问题，-让构造函数不再依赖new关键字"><span class="toc-text">4、解决 _ proto _兼容问题， 让构造函数不再依赖new关键字</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>React Fiber 再探 | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="React Fiber 再探">
+            
+	            React Fiber 再探
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/08/07</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>转自： <a href="http://blog.koba04.com/post/2017/04/25/a-state-of-react-fiber/" target="_blank" rel="noopener">http://blog.koba04.com/post/2017/04/25/a-state-of-react-fiber/</a></p>
+<p>因为在<a href="https://developers.facebook.com/videos/?category=f8_2017" target="_blank" rel="noopener">F8</a>也有关于React Fiber的发表，注意到React Fiber的人逐渐变多，所以想在这边对React Fiber的现状做简单的说明。</p>
+<p>讲到React全面改写，虽然有些人以为连使用方式都完全改变了，但实际上只有内部运作改变，从使用者角度来看则是没什么差别；当然也不需要安装叫react-fiber的package。</p>
+<p>相较之下，因为v16保持与现在版本相同的实作及兼容性，当v16发布时，若是使用v15.5的话我想无痛升级至v16是没有问题的。而且，要是没有说的话也不会发现内部运作已经改变了。</p>
+<ul>
+<li>v16基本上和v15的运作方式是一样的。也就是说性能（应该）也不会改变。</li>
+<li>从render（）method能够返回像[ <foo>, <bar> ]这样的数组，不需要再用多包一层ReactElement的方式回传。</bar></foo></li>
+<li>v17预设会变成非同步rendering。v16时似乎也会将一些API改为预设，如想尝鲜可使用ReactDOM.unstable_deferredUpdates试试</li>
+<li>v17并非追求更快速的性能优化，而是预计针对排程（scheduling）更新处理做出更弹性的设计，以及让使用者在输入时不被UI更新给block住。</li>
+</ul>
+<p>以下的信息都是关于内部运作，如果只是纯粹想使用React的人可以左转。对多数人来说，到v17前，以上关于React Fiber的信息就足够了。</p>
+<p>在解释新的Fiber前，先来一起看看v16现在的实作吧。React的source code的组成大概像下面这样。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">src</span><br><span class="line">├── fb</span><br><span class="line">├── isomorphic</span><br><span class="line">│   ├── children</span><br><span class="line">│   ├── classic</span><br><span class="line">│   │   ├── <span class="class"><span class="keyword">class</span></span></span><br><span class="line"><span class="class">│   │   ├── <span class="title">element</span></span></span><br><span class="line"><span class="class">│   │   └── <span class="title">types</span></span></span><br><span class="line"><span class="class">│   ├── <span class="title">hooks</span></span></span><br><span class="line"><span class="class">│   └── <span class="title">modern</span></span></span><br><span class="line"><span class="class">│       ├── <span class="title">class</span></span></span><br><span class="line"><span class="class">│       └── <span class="title">element</span></span></span><br><span class="line"><span class="class">├── <span class="title">renderers</span></span></span><br><span class="line"><span class="class">│   ├── <span class="title">art</span></span></span><br><span class="line"><span class="class">│   ├── <span class="title">dom</span></span></span><br><span class="line"><span class="class">│   │   ├── <span class="title">fiber</span></span></span><br><span class="line"><span class="class">│   │   ├── <span class="title">shared</span></span></span><br><span class="line"><span class="class">│   │   └── <span class="title">stack</span></span></span><br><span class="line"><span class="class">│   ├── <span class="title">native</span></span></span><br><span class="line"><span class="class">│   ├── <span class="title">noop</span></span></span><br><span class="line"><span class="class">│   ├── <span class="title">shared</span></span></span><br><span class="line"><span class="class">│   │   ├── <span class="title">fiber</span></span></span><br><span class="line"><span class="class">│   │   ├── <span class="title">hooks</span></span></span><br><span class="line"><span class="class">│   │   ├── <span class="title">shared</span></span></span><br><span class="line"><span class="class">│   │   ├── <span class="title">stack</span></span></span><br><span class="line"><span class="class">│   │   └── <span class="title">utils</span></span></span><br><span class="line"><span class="class">│   └── <span class="title">testing</span></span></span><br><span class="line"><span class="class">│       └── <span class="title">stack</span></span></span><br><span class="line"><span class="class">├── <span class="title">shared</span></span></span><br><span class="line"><span class="class">│   ├── <span class="title">types</span></span></span><br><span class="line"><span class="class">│   └── <span class="title">utils</span></span></span><br><span class="line"><span class="class">└── <span class="title">test</span></span></span><br></pre></td></tr></table></figure>
+<p>如上述，可以在renderers目录底下发现，Fiber是renderer的其中一员。和fiber同一层的stack是目前实作的renderer。</p>
+<p>除了renderers/shared/底下有fiber和stack以外，renderers/dom/底下也有fiber和stack。两者分别是目前renderer内部实作的两种类型，并根据其支持对应的DOM和Native组合成上述的文件夹结构。</p>
+<p>Fiber和Stack在React内部担任reconciliation的角色。reconciliation是指从ReactElement生成Component实体（instance）、计算差异（diff）并应用到Host（DOM）及呼叫Lifecycle methods的流程。计算差异并应用到Host的部分会依据不同的Host而有不同的实作；同样的，应用方式也会依据reconciliation的实作而有所差异，所以renderers/dom/底下才会同时存在Stack和Fiber两种实作。</p>
+<p>Host会根据React的执行环境改变：在浏览器的话就是DOM、在ReactNative的话就是Native的View。</p>
+<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>那么，接下来首先就让我们简单的介绍Stack renderer。Stack是类似将ReactElement变成树状（tree）结构并从上到下依序处理。</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*Gs-1LOl_OAEBr88NMjJsZQ.png" alt="1"></p>
+<p>从上图可以看到巢状的mountComponent（）被呼叫，并且是以同步的方式在运作。也就是说，如果是从最上层的Component重新render的情况的话，</p>
+<ul>
+<li>所有child component的render（）都会被执行过并重新建构成ReactElement tree</li>
+<li>更新时，会和先前的ReactElement tree做比较</li>
+<li>将差异处应用到Host</li>
+<li>呼叫Lifecycle method</li>
+</ul>
+<p>以上的步骤均为同步处理，因此若tree的结构较为复杂的话，运作这些步骤将会很花时间，而且UI还会完全被block住。</p>
+<p>或者可以看当还在执行动画或是使用者打字等需要即时执行的动作的状况：因为Stack所有的动作均为同步处理，当程序处理server回传的结果并呼叫React重新render时，动画和打字等执行都会被中断。虽然这些不是针对性能做调教时会重视的指标，但对于使用者体验来说是相当重要的。</p>
+<p>React Fiber就是为了解决上述的问题而诞生的。</p>
+<p>顺带一提，跟Stack有关的原始码似乎会在v16发布时从React内部被移除。</p>
+<h2 id="Fiber"><a href="#Fiber" class="headerlink" title="Fiber"></a>Fiber</h2><p>从wikipedia上的叙述来看，Fiber是一种「最轻量化的緒程（lightweight threads）」。</p>
+<p>React Fiber是以一个「Fiber」为单位来进行reconciliation。基本上可以把Fiber想像成对应到一个ReactElement。</p>
+<p>严谨一点来说，ReactElement的单位和Fiber不一定相等，Fiber甚至可能透过fiber.alternate来将自己复制（clone）后再次利用，不过以一个Fiber对应到一个ReactElement来想像的话比较容易理解。</p>
+<p>用Flow的形态宣告来看的话，Fiber的定义如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 省略一部分</span></span><br><span class="line">type Fiber = &#123;</span><br><span class="line">   tag: TypeOfWork,</span><br><span class="line">   key: <span class="literal">null</span> | string,</span><br><span class="line">   type: any,</span><br><span class="line">   stateNode: any,</span><br><span class="line">   <span class="keyword">return</span>: Fiber | <span class="literal">null</span>,</span><br><span class="line">   child: Fiber | <span class="literal">null</span>,</span><br><span class="line">   sibling: Fiber | <span class="literal">null</span>,</span><br><span class="line">   index: number,</span><br><span class="line">   ref: <span class="literal">null</span> | <span class="function">(<span class="params">((handle: mixed</span>) =&gt;</span> <span class="keyword">void</span>) &amp; &#123;<span class="attr">_stringRef</span>: ?string&#125;),</span><br><span class="line">   pendingProps: any, <span class="comment">// This type will be more specific once we overload the tag.</span></span><br><span class="line">   memoizedProps: any, <span class="comment">// The props used to create the output.</span></span><br><span class="line">   updateQueue: UpdateQueue | <span class="literal">null</span>,</span><br><span class="line">   memoizedState: any,</span><br><span class="line">   effectTag: TypeOfSideEffect,</span><br><span class="line">   nextEffect: Fiber | <span class="literal">null</span>,</span><br><span class="line">   firstEffect: Fiber | <span class="literal">null</span>,</span><br><span class="line">   lastEffect: Fiber | <span class="literal">null</span>,</span><br><span class="line">   pendingWorkPriority: PriorityLevel,</span><br><span class="line">   progressedPriority: PriorityLevel,</span><br><span class="line">   progressedChild: Fiber | <span class="literal">null</span>,</span><br><span class="line">   progressedFirstDeletion: Fiber | <span class="literal">null</span>,</span><br><span class="line">   progressedLastDeletion: Fiber | <span class="literal">null</span>,</span><br><span class="line">   alternate: Fiber | <span class="literal">null</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiber.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiber.js</a></li>
+</ul>
+<p>虽然在这边我们不针对每个属性（property）一一做介绍，不过我们可以得知return、child及sibling等属性会reference到其他的Fiber — Fiber是一种Linked List的结构。Stack是tree的结构，会沿着树状阶层结构向下处理；Fiber则会依照return、child及sibling的顺序来针对该ReactElement做处理。让我们来看看下面这张call stack tree就可以了解了。</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*tZguenmM90f6pTYmI-vCSw.png" alt="1"></p>
+<p>从图中可以看到，Fiber并不会像Stack一样累积过深的function call stack。</p>
+<p>Stack在执行时是以一个tree为单位处理；Fiber则是以一个Fiber的单位执行。Stack只能同步的执行；Fiber则可以针对该Fiber做排程处理。也就是说，假设现在有个Fiber其Linked List结构为A→B→C，当A执行到B被中断的话，可以之后再次执行B→C，这对Stack的同步处理结构来说是很难达到的。那如果用Generators呢？对于这件事，Sebastian Markbåge有在下面这个issue说明为什么不使用Generators，有兴趣的人可以看看。</p>
+<ul>
+<li><a href="https://github.com/facebook/react/issues/7942" target="_blank" rel="noopener">https://github.com/facebook/react/issues/7942</a></li>
+</ul>
+<h2 id="Fiber的排程"><a href="#Fiber的排程" class="headerlink" title="Fiber的排程"></a>Fiber的排程</h2><p>那么我们就来具体的看看排程是如何运作的。</p>
+<p>Fiber总共有beginWork、completeWork及commitWork三种阶段（phase）。beginWork会执行component实体化（instantiate）、呼叫component的render（）方法、以及进行shouldComponentUpdate（）结果的比较</p>
+<ul>
+<li><a href="https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiberBeginWork.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiberBeginWork.js</a></li>
+</ul>
+<p>completeWork会进行effectTag的设定来标记副作用（Side Effect），以及Host的实体化等工作。（completeWork只会在末端的Host执行）</p>
+<ul>
+<li><a href="https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiberCompleteWork.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiberCompleteWork.js</a></li>
+</ul>
+<p>副作用的定义如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">   NoEffect: <span class="number">0</span>, <span class="comment">//           0b0000000</span></span><br><span class="line">   Placement: <span class="number">1</span>, <span class="comment">//          0b0000001</span></span><br><span class="line">   Update: <span class="number">2</span>, <span class="comment">//             0b0000010</span></span><br><span class="line">   PlacementAndUpdate: <span class="number">3</span>, <span class="comment">// 0b0000011</span></span><br><span class="line">   Deletion: <span class="number">4</span>, <span class="comment">//           0b0000100</span></span><br><span class="line">   ContentReset: <span class="number">8</span>, <span class="comment">//       0b0001000</span></span><br><span class="line">   Callback: <span class="number">16</span>, <span class="comment">//          0b0010000</span></span><br><span class="line">   Err: <span class="number">32</span>, <span class="comment">//               0b0100000</span></span><br><span class="line">   Ref: <span class="number">64</span>, <span class="comment">//               0b1000000</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactTypeOfSideEffect.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactTypeOfSideEffect.js</a></li>
+</ul>
+<p>commitWork则会呼叫componentDid（Mount|Update）等Lifecycle method，以及将基于completeWork设定的effectTag的结果反映给Host。</p>
+<ul>
+<li><a href="https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiberCommitWork.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiberCommitWork.js</a></li>
+</ul>
+<p>在这三个阶段中，beginWork和completeWork是以Fiber为单位来执行，commitWork则会在所有Fiber处理完后才会执行。</p>
+<p>例如，像以下这样结构的Component，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Text = <span class="function"><span class="params">()</span> =&gt;</span> <span class="string">'...'</span>;</span><br><span class="line">List = <span class="function"><span class="params">()</span> =&gt;</span> [</span><br><span class="line">   &lt;div&gt;...&lt;<span class="regexp">/div&gt;,</span></span><br><span class="line"><span class="regexp">   &lt;div&gt;...&lt;/</span>div&gt;,</span><br><span class="line">   &lt;div&gt;...&lt;<span class="regexp">/div&gt;,</span></span><br><span class="line"><span class="regexp">];</span></span><br><span class="line"><span class="regexp">class App extends React.Component &#123;</span></span><br><span class="line"><span class="regexp">     render() &#123;</span></span><br><span class="line"><span class="regexp">         return (</span></span><br><span class="line"><span class="regexp">             &lt;main&gt;</span></span><br><span class="line"><span class="regexp">             &lt;h2&gt;...&lt;/</span>h2&gt;</span><br><span class="line">             &lt;p&gt;...&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">             &lt;div&gt;</span></span><br><span class="line"><span class="regexp">                 &lt;Text /</span>&gt;</span><br><span class="line">                 &lt;List /&gt;</span><br><span class="line">             &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">             &lt;/m</span>ain&gt;</span><br><span class="line">         );</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将会如以下流程被执行。</p>
+<p>beginWork…（HostRoot）<br>beginWork…<app>（ClassComponent）<br>beginWork…<main>（HostComponent）<br>beginWork，completeWork…<h2>（HostComponent）<br>beginWork，completeWork…<p>（HostComponent）<br>beginWork…<div>（HostComponent）<br>beginWork…<text>（FunctionalComponent）<br>beginWork completeWork…‘…’（HostText）<br>beginWork…<list>（Functional Component）<br>beginWork，completeWork…：<div>（HostComponent）<br>beginWork，completeWork…：<div>（HostComponent）<br>beginWork，completeWork…：<div>（HostComponent）<br>commitAllWork…（HostRoot）</div></div></div></list></text></div></p>
+<p>React Fiber在非同步rendering的情况下，权重较低（待会会提到）的步骤会使用requestIdleCallback（不支持的话会使用polyfill）来执行，他们会被排到后面被非同步的执行。在使用requestIdleCallback时可以从callback function利用IdleDeadline.timeRemaining（）取得闲置时间，因此当时间已不够处理剩下的步骤的话，Fiber就会重新呼叫requestIdleCallback将剩馀的步骤再往后排程；如此一来，权重较低的UI处理或其他处理就不会被block住了。</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback</a></li>
+</ul>
+<p>下图是Fiber以同步模式下执行的stack结果。可以看到全部都是同步的执行。在这个执行的区间内UI会完全被block住。</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*XVvgAcm9tDWweXOaWHL9Sg.png" alt="1"></p>
+<p>下图则是以非同步模式执行同一段程序的stack结果。可以发现call stack变得断断续续的，这样就能够实现non-block UI。右边较细的call stack则是commitWork阶段，从这可以发现rendering（紫色内存块的部份）只会发生在commitWork之后</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*UTNNuR97w16ymNKKXVf2hg.png" alt="1"></p>
+<p>在这边可以注意到的一点是，在beginWork到completeWork之间不会有render至Host View这样的副作用。例如若在非同步处理中进行render，View会以部分更新的方式执行，而这样会导致UI看起来会有点lag。React Fiber则是会将所有的View更新动作在commitWork执行，因此并不会发生这种状况；反过来说，commitWork很容易花上许多时间，造成帧速（frame）降低，因此做性能调教时要特别小心。另外，因为componentDid（Mount|Update）也是在这个期间执行，因此同样要注意不要在里面做复杂的处理来增加负担。</p>
+<p>题外话，为了解决上述的Lifecycle methods真的遇到瓶颈的状况，也有提案要将这些Lifecycle method做成Promise based的非同步API。还有，其实在mount时completeWork也会处理SideEffect，这是为了处理mount时DOM还没被加到HostContainer、加入后也不会发生显示问题而作的。这也是为了维持帧速而加入的技巧之一。</p>
+<p>接下来，上面有提到除了会使用requestIdleCallback来进行排程的工作之外，还会使用权重（Priority）来针对排程做分类</p>
+<p>权重的定义如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type PriorityLevel = <span class="number">0</span> | <span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span> | <span class="number">4</span> | <span class="number">5</span> | <span class="number">6</span>;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">   NoWork: <span class="number">0</span>, <span class="comment">// No work is pending.</span></span><br><span class="line">   SynchronousPriority: <span class="number">1</span>, <span class="comment">// For controlled text inputs. Synchronous side-effects.</span></span><br><span class="line">   TaskPriority: <span class="number">2</span>, <span class="comment">// Completes at the end of the current tick.</span></span><br><span class="line">   AnimationPriority: <span class="number">3</span>, <span class="comment">// Needs to complete before the next frame.</span></span><br><span class="line">   HighPriority: <span class="number">4</span>, <span class="comment">// Interaction that needs to complete pretty soon to feel responsive.</span></span><br><span class="line">   LowPriority: <span class="number">5</span>, <span class="comment">// Data fetching, or result from updating stores.</span></span><br><span class="line">   OffscreenPriority: <span class="number">6</span>, <span class="comment">// Won't be visible but do the work in case it becomes visible.</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactPriorityLevel.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactPriorityLevel.js</a><br>藉由给予每个更新程序不同权重，取得API response等权重较低的任务就能不中断使用者互动或是动画等等的更新处理。</li>
+</ul>
+<p>从下面连接的示例可以看到以上叙述的效果。在Async mode时，5000个list item会以每100ms的速度，在LowPriority权重下更新；Sync mode则是使用SynchronousPriority权重来做同步render。</p>
+<ul>
+<li><a href="https://koba04.github.io/react-fiber-resources/examples/" target="_blank" rel="noopener">https://koba04.github.io/react-fiber-resources/examples/</a></li>
+</ul>
+<p>请在input字段随意输入。在Async mode输入时list item不会被更新，虽然打字多少还是有点顿，但仍然能够顺畅的进行render；Sync mode的话，输入时list item会一边即时更新并干扰使用者的输入。</p>
+<p>权重较低的任务会用requestIdleCallback在闲置时执行，权重较高的任务则会使用requestAnimationFrame尽快的同步render出来。</p>
+<p>权重低的任务在执行时，若有权重高的任务进来，则权重低的任务会被中断，并执行权重高的任务。权重高的任务结束后，再继续执行权重低的任务。这种情况下，权重较低的Fiber在执行时被中断前，尚未被处理且权重高的Fiber是可以被重新利用的。</p>
+<p>就像上面所说的，因为任务的中断，Fiber能够被重复地利用。在非同步的情况下componentWillMount等Lifecycle method会被重复呼叫。componentDidMount等在commitWork被呼叫的method则不会被重复执行。</p>
+<p>另外，有个叫做OffscreenPriority的权重。利用它，我们能够针对第一次render不需要的部分做pre-render或是double buffering。例如对ReactDOM来说，有hidden属性的DOM就会被当作OffscreenPriority</p>
+<p>虽然还有其他像AnimationPriority等等的权重，不过现在还没有能够控制权重的API，所以目前还不知道该如何使用。（官方团队似乎会在facebook.com一边实验非同步render一边决定API规格）</p>
+<p>关于其他更细节的变动，我想从ReactIncremental-test.js的测试来看就可以发现能够做到哪些事了。</p>
+<ul>
+<li><a href="https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/__tests__/ReactIncremental-test.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/__tests__/ReactIncremental-test.js</a></li>
+</ul>
+<p>在这里使用的ReactNoop是测试用的renderer，可以在没有UI的测试环境下弹性的控制timeRemaining，是在React Fiber开发初期就已经拿来使用的renderer。如果要做custom renderer的话，或许会是个不错的参考示例。</p>
+<ul>
+<li><a href="https://github.com/facebook/react/blob/master/src/renderers/noop/ReactNoop.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/noop/ReactNoop.js</a></li>
+</ul>
+<p>##Error Boundary</p>
+<p>另外，虽然和Fiber本身没有直接关系，但官方似乎会支持Error Boundary的机制。Error Boundary是可以在当child component的render出错时用来将parent重新render的机制（虽然出错的child不会显示任何东西）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">     <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">         <span class="keyword">super</span>(props);</span><br><span class="line">         <span class="keyword">this</span>.state = &#123;</span><br><span class="line">             error: <span class="literal">null</span></span><br><span class="line">         &#125;;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// 定義 Error Handling</span></span><br><span class="line">     unstable_handleError(error) &#123;</span><br><span class="line">         <span class="keyword">this</span>.setState(&#123;error&#125;);</span><br><span class="line">     &#125;</span><br><span class="line">     render() &#123;</span><br><span class="line">         <span class="keyword">if</span> (<span class="keyword">this</span>.state.error) &#123;</span><br><span class="line">             <span class="keyword">return</span> &lt;div&gt;有錯誤&lt;/div&gt;;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">this</span>.props.children;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CoroutineComponent"><a href="#CoroutineComponent" class="headerlink" title="CoroutineComponent"></a>CoroutineComponent</h2><p>Fiber有CoroutineComponent、CoroutineHandlerPhase和YieldComponent三种Component。虽然还不太清楚用途，有一种可能是当parent component执行render到一半被中断时，可以在child component接收到结果后再继续parent的render。举例来说，代表Layout的Component正在试着render子元件，接着拿到size等结果后会再一次试着render父元件。</p>
+<p>在ReactCoroutin-test.js有关于上述机制的测试，或许看完后会更了解。state有种反正有在动就好的感觉。</p>
+<ul>
+<li><a href="https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/__tests__/ReactCoroutine-test.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/__tests__/ReactCoroutine-test.js</a></li>
+</ul>
+<h2 id="Custom-Renderer"><a href="#Custom-Renderer" class="headerlink" title="Custom Renderer"></a>Custom Renderer</h2><p>在Stack时，要做Custom Renderer的话就一定要hack；React Fiber的话则只需要透过Flow给型态，非常的浅显易懂。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type HostConfig&lt;T, P, I, TI, PI, C, CX, PL&gt; = &#123;</span><br><span class="line">   getRootHostContext(rootContainerInstance: C): CX,</span><br><span class="line">   getChildHostContext(parentHostContext: CX, <span class="attr">type</span>: T): CX,</span><br><span class="line">   getPublicInstance(instance: I | TI): PI,</span><br><span class="line"> </span><br><span class="line">   createInstance(</span><br><span class="line">     type: T,</span><br><span class="line">     props: P,</span><br><span class="line">     rootContainerInstance: C,</span><br><span class="line">     hostContext: CX,</span><br><span class="line">     internalInstanceHandle: OpaqueHandle,</span><br><span class="line">   ): I,</span><br><span class="line">   appendInitialChild(parentInstance: I, <span class="attr">child</span>: I | TI): <span class="keyword">void</span>,</span><br><span class="line">   finalizeInitialChildren(</span><br><span class="line">     parentInstance: I,</span><br><span class="line">     type: T,</span><br><span class="line">     props: P,</span><br><span class="line">     rootContainerInstance: C,</span><br><span class="line">   ): boolean,</span><br><span class="line"> </span><br><span class="line">   prepareUpdate(</span><br><span class="line">     instance: I,</span><br><span class="line">     type: T,</span><br><span class="line">     oldProps: P,</span><br><span class="line">     newProps: P,</span><br><span class="line">     rootContainerInstance: C,</span><br><span class="line">     hostContext: CX,</span><br><span class="line">   ): <span class="literal">null</span> | PL,</span><br><span class="line">   commitUpdate(</span><br><span class="line">     instance: I,</span><br><span class="line">     updatePayload: PL,</span><br><span class="line">     type: T,</span><br><span class="line">     oldProps: P,</span><br><span class="line">     newProps: P,</span><br><span class="line">     internalInstanceHandle: OpaqueHandle,</span><br><span class="line">   ): <span class="keyword">void</span>,</span><br><span class="line">   commitMount(</span><br><span class="line">     instance: I,</span><br><span class="line">     type: T,</span><br><span class="line">     newProps: P,</span><br><span class="line">     internalInstanceHandle: OpaqueHandle,</span><br><span class="line">   ): <span class="keyword">void</span>,</span><br><span class="line"> </span><br><span class="line">   shouldSetTextContent(props: P): boolean,</span><br><span class="line">   resetTextContent(instance: I): <span class="keyword">void</span>,</span><br><span class="line">   shouldDeprioritizeSubtree(type: T, <span class="attr">props</span>: P): boolean,</span><br><span class="line"> </span><br><span class="line">   createTextInstance(</span><br><span class="line">     text: string,</span><br><span class="line">     rootContainerInstance: C,</span><br><span class="line">     hostContext: CX,</span><br><span class="line">     internalInstanceHandle: OpaqueHandle,</span><br><span class="line">   ): TI,</span><br><span class="line">   commitTextUpdate(textInstance: TI, <span class="attr">oldText</span>: string, <span class="attr">newText</span>: string): <span class="keyword">void</span>,</span><br><span class="line"> </span><br><span class="line">   appendChild(parentInstance: I | C, <span class="attr">child</span>: I | TI): <span class="keyword">void</span>,</span><br><span class="line">   insertBefore(parentInstance: I | C, <span class="attr">child</span>: I | TI, <span class="attr">beforeChild</span>: I | TI): <span class="keyword">void</span>,</span><br><span class="line">   removeChild(parentInstance: I | C, <span class="attr">child</span>: I | TI): <span class="keyword">void</span>,</span><br><span class="line"> </span><br><span class="line">   scheduleAnimationCallback(callback: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">void</span>): number | <span class="keyword">void</span>,</span><br><span class="line">   scheduleDeferredCallback(</span><br><span class="line">     callback: <span class="function">(<span class="params">deadline: Deadline</span>) =&gt;</span> <span class="keyword">void</span>,</span><br><span class="line">   ): number | <span class="keyword">void</span>,</span><br><span class="line"> </span><br><span class="line">   prepareForCommit(): <span class="keyword">void</span>,</span><br><span class="line">   resetAfterCommit(): <span class="keyword">void</span>,</span><br><span class="line"> </span><br><span class="line">   useSyncScheduling?: boolean,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiberReconciler.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiberReconciler.js</a></li>
+</ul>
+<p>如果想自己实际写一个的话，可以参考前面介绍的ReactNoop和能将ReactElement返回成JSON的测试用rendererReactTestRenderer和ReactART</p>
+<p>-<a href="https://github.com/facebook/react/blob/master/src/renderers/testing/ReactTestRendererFiber.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/testing/ReactTestRendererFiber.js</a></p>
+<p>-<a href="https://github.com/facebook/react/blob/master/src/renderers/art/ReactARTFiber.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/src/renderers/art/ReactARTFiber.js</a></p>
+<p>但是React从v16后会变成Flat bundle，也就是没办法再透过直接利用react/lib/xxx的方式来使用内部library。目前还不知道会提供什么给需要做Custom Renderer的开发者们。</p>
+<h2 id="Server-Side-Rendering"><a href="#Server-Side-Rendering" class="headerlink" title="Server Side Rendering"></a>Server Side Rendering</h2><p>关于Server Side Rendering的部分，因为Facebook本身没有使用，因此被延后尚未实作；但因为目前大家习惯的renderToString（）是同步的，React Fiber后要render出HTML字串又不阻挡event loop就变得比较容易（v16后会变怎么样还不确定）。至于像renderToStream的话，会因为commitWork要产生副作用的关系而没办法正常的将需要render的view一次集合起来，该如何使用大家可以再想想。</p>
+<h2 id="v16尝试非同步rendering懒人包"><a href="#v16尝试非同步rendering懒人包" class="headerlink" title="v16尝试非同步rendering懒人包"></a>v16尝试非同步rendering懒人包</h2><ul>
+<li>因为现在ReactDOMFeatureFlags有fiberAsyncScheduling这个flag，如果将它hard-coded预设为true的话就能做非同步rendering了。但因为这样的做法还没有写测试，我想应该还会有些bug。</li>
+<li>或是利用ReactDOM.unstable_deferredUpdates并在其中以lowPriority来执行，就能变成非同步了。</li>
+</ul>
+<h2 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h2><p>很好奇很想知道Fiber是什么的人，我觉得可以看看F8上Tom Occhino的talk，非常的浅显易懂。</p>
+<ul>
+<li>The Evolution of React and GraphQL at Facebook and Beyond —<a href="https://developers.facebook.com/videos/f8-2017/the-evolution-of-react-and-graphql-at-facebook-and-beyond/" target="_blank" rel="noopener">https://developers.facebook.com/videos/f8-2017/the-evolution-of-react-and-graphql-at-facebook-and-beyond/</a></li>
+</ul>
+<p>Lin Clark在React Conf上用Code Cartoon的方式来说明React Fiber，也非常的好懂。</p>
+<iframe width="800" height="450" src="https://youtu.be/ZCuYPiUIONs" frameborder="0" allowfullscreen><br></iframe>
+
+<p>另外还有Sebastian Markbåge在React Conf的Keynote也有提到React Fiber</p>
+<iframe width="800" height="450" src="https://youtu.be/bvFpe5j9-zQ" frameborder="0" allowfullscreen><br></iframe>
+
+<p>最后是我自己将有关React Fiber的数据整理起来的repo。</p>
+<ul>
+<li><a href="https://github.com/koba04/react-fiber-resources" target="_blank" rel="noopener">https://github.com/koba04/react-fiber-resources</a></li>
+</ul>
+<h2 id="那么，变成React-Fiber后有什么好处？"><a href="#那么，变成React-Fiber后有什么好处？" class="headerlink" title="那么，变成React Fiber后有什么好处？"></a>那么，变成React Fiber后有什么好处？</h2><p>变成React Fiber后，我想在比较框架性能的benchmark分数可能不会太好。变成React Fiber后，一直以来都是同步运作的tree会变成非同步的运作，相较之下非同步运作的优点是能够更弹性的安排处理内容。而藉由弹性的处理，我们可更快速处理动画并让使用者互动运作更顺畅。还有，因为有了基于非同步机制的React Fiber，我认为以后并不会额外增加类似非同步处理的功能。</p>
+<p>虽然这么说，但v16还不会有如此改变，让我们一起来期待以后会加上什么功能吧。另外，对实作React Fiber有兴趣的人也一定要读读看。</p>
+<p>顺道一提，React Fiber的第一支PR应该是这只。</p>
+<ul>
+<li><a href="https://github.com/facebook/react/pull/6690" target="_blank" rel="noopener">https://github.com/facebook/react/pull/6690</a></li>
+</ul>
+</h2></main></app></p>
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/08/07/9545/" class="next-post btn btn-default" title='pc 禁止弹框底层滑动'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">pc 禁止弹框底层滑动</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stack"><span class="toc-text">Stack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fiber"><span class="toc-text">Fiber</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fiber的排程"><span class="toc-text">Fiber的排程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">（HostComponent）beginWork，completeWork…（HostComponent）beginWork…（HostComponent）beginWork…（FunctionalComponent）beginWork completeWork…‘…’（HostText）beginWork…（Functional Component）beginWork，completeWork…：（HostComponent）beginWork，completeWork…：（HostComponent）beginWork，completeWork…：（HostComponent）commitAllWork…（HostRoot）
+React Fiber在非同步rendering的情况下，权重较低（待会会提到）的步骤会使用requestIdleCallback（不支持的话会使用polyfill）来执行，他们会被排到后面被非同步的执行。在使用requestIdleCallback时可以从callback function利用IdleDeadline.timeRemaining（）取得闲置时间，因此当时间已不够处理剩下的步骤的话，Fiber就会重新呼叫requestIdleCallback将剩馀的步骤再往后排程；如此一来，权重较低的UI处理或其他处理就不会被block住了。
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
+
+下图是Fiber以同步模式下执行的stack结果。可以看到全部都是同步的执行。在这个执行的区间内UI会完全被block住。
+
+下图则是以非同步模式执行同一段程序的stack结果。可以发现call stack变得断断续续的，这样就能够实现non-block UI。右边较细的call stack则是commitWork阶段，从这可以发现rendering（紫色内存块的部份）只会发生在commitWork之后
+
+在这边可以注意到的一点是，在beginWork到completeWork之间不会有render至Host View这样的副作用。例如若在非同步处理中进行render，View会以部分更新的方式执行，而这样会导致UI看起来会有点lag。React Fiber则是会将所有的View更新动作在commitWork执行，因此并不会发生这种状况；反过来说，commitWork很容易花上许多时间，造成帧速（frame）降低，因此做性能调教时要特别小心。另外，因为componentDid（Mount|Update）也是在这个期间执行，因此同样要注意不要在里面做复杂的处理来增加负担。
+题外话，为了解决上述的Lifecycle methods真的遇到瓶颈的状况，也有提案要将这些Lifecycle method做成Promise based的非同步API。还有，其实在mount时completeWork也会处理SideEffect，这是为了处理mount时DOM还没被加到HostContainer、加入后也不会发生显示问题而作的。这也是为了维持帧速而加入的技巧之一。
+接下来，上面有提到除了会使用requestIdleCallback来进行排程的工作之外，还会使用权重（Priority）来针对排程做分类
+权重的定义如下：
+12345678910export type PriorityLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6;module.exports = {   NoWork: 0, // No work is pending.   SynchronousPriority: 1, // For controlled text inputs. Synchronous side-effects.   TaskPriority: 2, // Completes at the end of the current tick.   AnimationPriority: 3, // Needs to complete before the next frame.   HighPriority: 4, // Interaction that needs to complete pretty soon to feel responsive.   LowPriority: 5, // Data fetching, or result from updating stores.   OffscreenPriority: 6, // Won&#39;t be visible but do the work in case it becomes visible.};
+
+https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactPriorityLevel.js藉由给予每个更新程序不同权重，取得API response等权重较低的任务就能不中断使用者互动或是动画等等的更新处理。
+
+从下面连接的示例可以看到以上叙述的效果。在Async mode时，5000个list item会以每100ms的速度，在LowPriority权重下更新；Sync mode则是使用SynchronousPriority权重来做同步render。
+
+https://koba04.github.io/react-fiber-resources/examples/
+
+请在input字段随意输入。在Async mode输入时list item不会被更新，虽然打字多少还是有点顿，但仍然能够顺畅的进行render；Sync mode的话，输入时list item会一边即时更新并干扰使用者的输入。
+权重较低的任务会用requestIdleCallback在闲置时执行，权重较高的任务则会使用requestAnimationFrame尽快的同步render出来。
+权重低的任务在执行时，若有权重高的任务进来，则权重低的任务会被中断，并执行权重高的任务。权重高的任务结束后，再继续执行权重低的任务。这种情况下，权重较低的Fiber在执行时被中断前，尚未被处理且权重高的Fiber是可以被重新利用的。
+就像上面所说的，因为任务的中断，Fiber能够被重复地利用。在非同步的情况下componentWillMount等Lifecycle method会被重复呼叫。componentDidMount等在commitWork被呼叫的method则不会被重复执行。
+另外，有个叫做OffscreenPriority的权重。利用它，我们能够针对第一次render不需要的部分做pre-render或是double buffering。例如对ReactDOM来说，有hidden属性的DOM就会被当作OffscreenPriority
+虽然还有其他像AnimationPriority等等的权重，不过现在还没有能够控制权重的API，所以目前还不知道该如何使用。（官方团队似乎会在facebook.com一边实验非同步render一边决定API规格）
+关于其他更细节的变动，我想从ReactIncremental-test.js的测试来看就可以发现能够做到哪些事了。
+
+https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/__tests__/ReactIncremental-test.js
+
+在这里使用的ReactNoop是测试用的renderer，可以在没有UI的测试环境下弹性的控制timeRemaining，是在React Fiber开发初期就已经拿来使用的renderer。如果要做custom renderer的话，或许会是个不错的参考示例。
+
+https://github.com/facebook/react/blob/master/src/renderers/noop/ReactNoop.js
+
+##Error Boundary
+另外，虽然和Fiber本身没有直接关系，但官方似乎会支持Error Boundary的机制。Error Boundary是可以在当child component的render出错时用来将parent重新render的机制（虽然出错的child不会显示任何东西）。
+123456789101112131415161718class App extends React.Component {     constructor(props) {         super(props);         this.state = {             error: null         };     }     // 定義 Error Handling     unstable_handleError(error) {         this.setState({error});     }     render() {         if (this.state.error) {             return &lt;div&gt;有錯誤&lt;/div&gt;;         }         return this.props.children;     }}
+CoroutineComponentFiber有CoroutineComponent、CoroutineHandlerPhase和YieldComponent三种Component。虽然还不太清楚用途，有一种可能是当parent component执行render到一半被中断时，可以在child component接收到结果后再继续parent的render。举例来说，代表Layout的Component正在试着render子元件，接着拿到size等结果后会再一次试着render父元件。
+在ReactCoroutin-test.js有关于上述机制的测试，或许看完后会更了解。state有种反正有在动就好的感觉。
+
+https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/__tests__/ReactCoroutine-test.js
+
+Custom Renderer在Stack时，要做Custom Renderer的话就一定要hack；React Fiber的话则只需要透过Flow给型态，非常的浅显易懂。
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869export type HostConfig&lt;T, P, I, TI, PI, C, CX, PL&gt; = {   getRootHostContext(rootContainerInstance: C): CX,   getChildHostContext(parentHostContext: CX, type: T): CX,   getPublicInstance(instance: I | TI): PI,    createInstance(     type: T,     props: P,     rootContainerInstance: C,     hostContext: CX,     internalInstanceHandle: OpaqueHandle,   ): I,   appendInitialChild(parentInstance: I, child: I | TI): void,   finalizeInitialChildren(     parentInstance: I,     type: T,     props: P,     rootContainerInstance: C,   ): boolean,    prepareUpdate(     instance: I,     type: T,     oldProps: P,     newProps: P,     rootContainerInstance: C,     hostContext: CX,   ): null | PL,   commitUpdate(     instance: I,     updatePayload: PL,     type: T,     oldProps: P,     newProps: P,     internalInstanceHandle: OpaqueHandle,   ): void,   commitMount(     instance: I,     type: T,     newProps: P,     internalInstanceHandle: OpaqueHandle,   ): void,    shouldSetTextContent(props: P): boolean,   resetTextContent(instance: I): void,   shouldDeprioritizeSubtree(type: T, props: P): boolean,    createTextInstance(     text: string,     rootContainerInstance: C,     hostContext: CX,     internalInstanceHandle: OpaqueHandle,   ): TI,   commitTextUpdate(textInstance: TI, oldText: string, newText: string): void,    appendChild(parentInstance: I | C, child: I | TI): void,   insertBefore(parentInstance: I | C, child: I | TI, beforeChild: I | TI): void,   removeChild(parentInstance: I | C, child: I | TI): void,    scheduleAnimationCallback(callback: () =&gt; void): number | void,   scheduleDeferredCallback(     callback: (deadline: Deadline) =&gt; void,   ): number | void,    prepareForCommit(): void,   resetAfterCommit(): void,    useSyncScheduling?: boolean,};
+
+https://github.com/facebook/react/blob/master/src/renderers/shared/fiber/ReactFiberReconciler.js
+
+如果想自己实际写一个的话，可以参考前面介绍的ReactNoop和能将ReactElement返回成JSON的测试用rendererReactTestRenderer和ReactART
+-https://github.com/facebook/react/blob/master/src/renderers/testing/ReactTestRendererFiber.js
+-https://github.com/facebook/react/blob/master/src/renderers/art/ReactARTFiber.js
+但是React从v16后会变成Flat bundle，也就是没办法再透过直接利用react/lib/xxx的方式来使用内部library。目前还不知道会提供什么给需要做Custom Renderer的开发者们。
+Server Side Rendering关于Server Side Rendering的部分，因为Facebook本身没有使用，因此被延后尚未实作；但因为目前大家习惯的renderToString（）是同步的，React Fiber后要render出HTML字串又不阻挡event loop就变得比较容易（v16后会变怎么样还不确定）。至于像renderToStream的话，会因为commitWork要产生副作用的关系而没办法正常的将需要render的view一次集合起来，该如何使用大家可以再想想。
+v16尝试非同步rendering懒人包
+因为现在ReactDOMFeatureFlags有fiberAsyncScheduling这个flag，如果将它hard-coded预设为true的话就能做非同步rendering了。但因为这样的做法还没有写测试，我想应该还会有些bug。
+或是利用ReactDOM.unstable_deferredUpdates并在其中以lowPriority来执行，就能变成非同步了。
+
+其他资源很好奇很想知道Fiber是什么的人，我觉得可以看看F8上Tom Occhino的talk，非常的浅显易懂。
+
+The Evolution of React and GraphQL at Facebook and Beyond —https://developers.facebook.com/videos/f8-2017/the-evolution-of-react-and-graphql-at-facebook-and-beyond/
+
+Lin Clark在React Conf上用Code Cartoon的方式来说明React Fiber，也非常的好懂。
+
+
+另外还有Sebastian Markbåge在React Conf的Keynote也有提到React Fiber
+
+
+最后是我自己将有关React Fiber的数据整理起来的repo。
+
+https://github.com/koba04/react-fiber-resources
+
+那么，变成React Fiber后有什么好处？变成React Fiber后，我想在比较框架性能的benchmark分数可能不会太好。变成React Fiber后，一直以来都是同步运作的tree会变成非同步的运作，相较之下非同步运作的优点是能够更弹性的安排处理内容。而藉由弹性的处理，我们可更快速处理动画并让使用者互动运作更顺畅。还有，因为有了基于非同步机制的React Fiber，我认为以后并不会额外增加类似非同步处理的功能。
+虽然这么说，但v16还不会有如此改变，让我们一起来期待以后会加上什么功能吧。另外，对实作React Fiber有兴趣的人也一定要读读看。
+顺道一提，React Fiber的第一支PR应该是这只。
+
+https://github.com/facebook/react/pull/6690
+
+</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CoroutineComponent"><span class="toc-text">CoroutineComponent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Custom-Renderer"><span class="toc-text">Custom Renderer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Server-Side-Rendering"><span class="toc-text">Server Side Rendering</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v16尝试非同步rendering懒人包"><span class="toc-text">v16尝试非同步rendering懒人包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他资源"><span class="toc-text">其他资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#那么，变成React-Fiber后有什么好处？"><span class="toc-text">那么，变成React Fiber后有什么好处？</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

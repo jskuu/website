@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>React.Component | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="React.Component">
+            
+	            React.Component
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/08/06</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>以下 <em>unstable_AsyncComponent</em> 在16.3.0的时候被改名 <em>unstable_AsyncMode</em></p>
+<h3 id="组件本质是对象"><a href="#组件本质是对象" class="headerlink" title="组件本质是对象"></a>组件本质是对象</h3><p><img src="https://user-images.githubusercontent.com/25027560/36943140-79bcc8de-1fbe-11e8-96f0-98939acce31a.png" alt="1"></p>
+<p><img src="https://user-images.githubusercontent.com/25027560/36943143-7f599b3c-1fbe-11e8-96cf-8f32a522154b.png" alt="2"></p>
+<p>其实就是个对象，有很多属性，注意到props里面， 没有内容<br>给组件A里面包含一点内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'组件A'</span>,&lt;A&gt;<span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>加点内容看看<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">A</span>&gt;</span></span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-images.githubusercontent.com/25027560/36943144-869d0384-1fbe-11e8-8fe0-33777003cef2.png" alt="3"></p>
+<p>可以看到，props.children里面开始嵌套内容了<br>那以我们聪明的程序员的逻辑来推理一下，其实不断的页面嵌套，就是不断的给这个对象嵌套props而已<br>不信再看一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'组件A'</span>,&lt;A&gt;<span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>加点内容看看<span class="tag">&lt;<span class="name">a</span>&gt;</span>不信再加多一点<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">A</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-images.githubusercontent.com/25027560/36943146-8e04f5fa-1fbe-11e8-9a3e-707e06cffed6.png" alt="4"></p>
+<h2 id="虚拟DOM概念"><a href="#虚拟DOM概念" class="headerlink" title="虚拟DOM概念"></a>虚拟DOM概念</h2><p>所以到目前为止，我们知道了react的组件只是对象，而我们都知道真正的页面是由一个一个的DOM节点组成的，在比较原生的jQuery年代，通过JS来操纵DOM元素，而且都是真实的DOM元素，而且我们都知道复杂或频繁的DOM操作通常是性能瓶颈产生的原因<br>所以React引入了虚拟DOM（Virtual DOM）的概念<br>总的说起来，无论多复杂的操作，都只是先进行虚拟DOM的JS计算，把这个组件对象计算好了以后，再一次性的通过Diff算法进行渲染或者更新，而不是每次都要直接操作真实的DOM。<br>在即时编译的时代，调用DOM的开销是很大的。而Virtual DOM的执行完全都在Javascript 引擎中，完全不会有这个开销。</p>
+<p>知道了什么是虚拟DOM以及组件的本质后，我们还是来看一下代码吧<br>先从生成组件开始切入，因为要生成组件就肯定会去找组件是什么<br>createElement: createElementWithValidation,</p>
+<h2 id="组件的本源"><a href="#组件的本源" class="headerlink" title="组件的本源"></a>组件的本源</h2><p>知道了组件是对象后，我们去看看它的本源</p>
+<p>摘取一些核心概念出来看就好</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElementWithValidation</span>(<span class="params">type, props, children</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> element = createElement.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">  <span class="keyword">return</span> element;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，返回了一个element，这个元素又是由createElement方法生成的，顺着往下找</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">type, config, children</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> props = &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> key = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> ref = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> source = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>返回的是ReactElement方法，感觉已经很近了，马上要触及本源了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ReactElement = <span class="function"><span class="keyword">function</span> (<span class="params">type, key, ref, self, source, owner, props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> element = &#123;</span><br><span class="line">    $$<span class="keyword">typeof</span>: REACT_ELEMENT_TYPE,</span><br><span class="line">    type: type,</span><br><span class="line">    key: key,</span><br><span class="line">    ref: ref,</span><br><span class="line">    props: props,</span><br><span class="line">    _owner: owner</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> element;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>返回了一个对象，再看这个对象，是不是跟上面打印出来的对象格式很像？再看一眼</p>
+<p><img src="https://user-images.githubusercontent.com/25027560/36943148-97a738de-1fbe-11e8-8d69-1d636d1c3ec3.png" alt="6"></p>
+<h2 id="这就是组件的本源"><a href="#这就是组件的本源" class="headerlink" title="这就是组件的本源"></a>这就是组件的本源</h2><p>组件三种基类<br>前面说了，版本16以后，封装了三种组件基类：分别是组件、纯组件、异步组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Component: Component,</span><br><span class="line">PureComponent: PureComponent,</span><br><span class="line">unstable_AsyncComponent: AsyncComponent,</span><br></pre></td></tr></table></figure>
+<p>一个个去看一下区别在哪里，先看<strong> Component</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Component</span>(<span class="params">props, context, updater</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.props = props;</span><br><span class="line">  <span class="keyword">this</span>.context = context;</span><br><span class="line">  <span class="keyword">this</span>.refs = emptyObject;</span><br><span class="line">  <span class="keyword">this</span>.updater = updater || ReactNoopUpdateQueue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很简单，一个构造函数，通过它构造的实例对象有三个私有属性，refs则是个emptyObject，看名字就知道是空对象<br>这个emptyObject也是引入的插件<br>var emptyObject = require(‘fbjs/lib/emptyObject’);</p>
+<p>再去看PureComponent，AsyncComponent，定义的时候居然跟Component是一样的</p>
+<p><img src="https://user-images.githubusercontent.com/25027560/36943150-a0871f5a-1fbe-11e8-85ce-437908d8a3c6.png" alt="7"></p>
+<p>都是这四句话</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.props = props;</span><br><span class="line">  <span class="keyword">this</span>.context = context;</span><br><span class="line">  <span class="keyword">this</span>.refs = emptyObject;</span><br><span class="line">  <span class="keyword">this</span>.updater = updater || ReactNoopUpdateQueue;</span><br></pre></td></tr></table></figure>
+<p>  区别呢？这里就要比较理解原型链方面的知识了<br>虽然原型和继承在日常项目和工作中用的不多，那是因为我们在面向过程编程，但想要进阶，就要去读别人的源码，去自己封装组件，这事它们就派上用场了，这就是为什么它们很重要的原因。</p>
+<p>核心的方法，和属性，以及这三种组件直接的关系都是通过原型的知识联系起来的，关键代码如下，我画了个简图，希望能对看文章的各位有所帮助，如果有画错的，希望能指正我</p>
+<p>先上核心代码<br>setState和forceUpdate这两个方法挂载Component（组件构造器）的原型上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Component.prototype.setState = <span class="function"><span class="keyword">function</span> (<span class="params">partialState, callback</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Component.prototype.forceUpdate = <span class="function"><span class="keyword">function</span> (<span class="params">callback</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>定义一个ComponentDummy，其实也是一个构造器，按照名字来理解就是“假组件”😂，它是当做辅助用的</p>
+<p>让ComponentDummy的原型指向Component的原型，这样它也能访问原型上面的共有方法和属性了，比如setState和forceUpdate</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ComponentDummy</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">ComponentDummy.prototype = Component.prototype;</span><br></pre></td></tr></table></figure>
+<p>这句话，假组件构造器ComponentDummy实例化出来一个对象pureComponentPrototype，然后把这个对象的constructor属性又指向了PureComponent，因此PureComponent也成为了一个构造器，也就是上面的第二种组件基类<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> pureComponentPrototype = PureComponent.prototype = <span class="keyword">new</span> ComponentDummy();</span><br><span class="line">pureComponentPrototype.constructor = PureComponent;</span><br></pre></td></tr></table></figure></p>
+<p>AsyncComponent基类也是一样<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> asyncComponentPrototype = AsyncComponent.prototype = <span class="keyword">new</span> ComponentDummy();</span><br><span class="line">asyncComponentPrototype.constructor = AsyncComponent;</span><br></pre></td></tr></table></figure></p>
+<p>但是AsyncComponent的原型多了一个方法render，看到了吗，妈妈呀，这就是render的出处<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">asyncComponentPrototype.render = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.props.children;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>所以到目前为止，可以得出一个原型图</p>
+<p><img src="https://user-images.githubusercontent.com/25027560/36943153-aad01ab6-1fbe-11e8-8b7d-d24d955fa1b5.png" alt="8"></p>
+<p>但是，有个问题来了，render方法挂载在AsyncComponent的原型上，那通过Component构造器构造出来的实例岂不是读不到render方法，那为什么日常组件是这样写的？</p>
+<p><img src="https://user-images.githubusercontent.com/25027560/36943154-b2e23fd6-1fbe-11e8-90f7-e5a7022e8a49.png" alt="9"></p>
+<p>还有两句代码，上面做了个小剧透的_assign<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Avoid an extra prototype jump for these methods.</span></span><br><span class="line">_assign(pureComponentPrototype, Component.prototype);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Avoid an extra prototype jump for these methods.</span></span><br><span class="line">_assign(asyncComponentPrototype, Component.prototype);</span><br></pre></td></tr></table></figure>
+<p>每句话上面还特意有个注释，Avoid an extra prototype jump for these methods.，避免这些方法额外的原型跳转，先不管它，先看_assign做了什么，<br>把Component的原型跟AsyncComponent的原型合并，<br>那么这里答案就呼之欲出了，如此一来，AsyncComponent上面的render方法，不就相当于挂载到Component上面了吗？</p>
+<p>以此类推，三种基类构造器最后都是基于同一个原型，共享所以方法，包括render、setState、forceUpdate等等，最后的原型图应该就变成了这样</p>
+<p><img src="https://user-images.githubusercontent.com/25027560/36943157-bafe3bde-1fbe-11e8-98e8-9dbbdc9ad624.png" alt="10"></p>
+<p>到这里，有个问题要思考的是？<br>既然最后三个基类共用同一个原型，那为什么要分开来写？<br>中间还通过一个假组件构造器ComponentDummy来辅助构建两个实例</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/08/07/9541/" class="pre-post btn btn-default" title='prototype, getPrototypeOf 和__proto__'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">prototype, getPrototypeOf 和__proto__</span>
+        </a>
+    
+    
+        <a href="/2018/08/06/9539/" class="next-post btn btn-default" title='React ref教程'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">React ref教程</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#组件本质是对象"><span class="toc-text">组件本质是对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟DOM概念"><span class="toc-text">虚拟DOM概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组件的本源"><span class="toc-text">组件的本源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这就是组件的本源"><span class="toc-text">这就是组件的本源</span></a>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

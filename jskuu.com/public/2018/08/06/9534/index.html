@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>弹幕实现 | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="弹幕实现">
+            
+	            弹幕实现
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/08/06</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>思考-如何实现弹幕<br>我们先抛开弹幕，来看看现实生活中的一个场景。</p>
+<p>什么场景呢，就是一台舞台剧的拍摄过程。</p>
+<p>我们先看看拍一个舞台剧需要准备哪些东西：</p>
+<ul>
+<li>首先需要一个舞台</li>
+<li>还需要有个剧本，剧本规定了这个剧该怎么演</li>
+<li>然后需要一大堆演员，每个演员要自己化妆，确定自己什么时候上场</li>
+<li>再然后需要个导演，导演负责整个流程的控制叫演员上场表演</li>
+</ul>
+<p>首先我们需要知道，一场舞台剧是分好几个场次的。有的演员在第一场，有的演员在第二场，每个演员的身份装扮也都是不同的。</p>
+<p>在开场之前，需要做些前期准备，比如舞台装扮，还有跟演员说戏。<br>什么是说戏呢？<br>导演会先让演员看剧本，先装扮好。然后跟演员说：那个xxx你是第二场上，xxx第一场。到时我会提醒你们第几场开始了，你们要注意听。</p>
+<p>说完戏之后，舞台剧就开始演了。</p>
+<p>每开始一个场次，导演就喊：第xx场开始了，这个场次的演员注意上场。然后演员听到后就会找到时机上场。</p>
+<p>整个舞台剧就这样按流程表演了。</p>
+<p>为什么要说这个例子呢，因为我发现，弹幕跟这个就是一回事。</p>
+<p>每一条弹幕其实就是一个演员，我们再搞一个调度者导演，来控制弹幕的出场。导演的说戏其实就是每个演员添加针对导演的事件监听。</p>
+<h2 id="开始动手实现"><a href="#开始动手实现" class="headerlink" title="开始动手实现"></a>开始动手实现</h2><p>为了方便，下面所有代码基于jQuery实现</p>
+<p>我们先确定需要的元素：</p>
+<p>1.我们需要个舞台</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"J_stage"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//舞台是全局变量</span></span><br><span class="line"><span class="keyword">var</span> stage = $(<span class="string">'#J_stage'</span>);</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.我们需要个剧本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> playList = [&#123;</span><br><span class="line">    <span class="comment">//从何时开始</span></span><br><span class="line">    time:<span class="number">0</span>,</span><br><span class="line">    <span class="comment">//经过的时间</span></span><br><span class="line">    duration:<span class="number">4292</span>,</span><br><span class="line">    <span class="comment">//舞台偏移的高度</span></span><br><span class="line">    top:<span class="number">10</span>,</span><br><span class="line">    <span class="comment">//弹幕文字大小</span></span><br><span class="line">    size:<span class="number">16</span>,</span><br><span class="line">    <span class="comment">//弹幕颜色</span></span><br><span class="line">    color:<span class="string">'#000'</span>,</span><br><span class="line">    <span class="comment">//内容</span></span><br><span class="line">    text:<span class="string">'前方高能注意'</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    <span class="comment">//从何时开始</span></span><br><span class="line">    time:<span class="number">100</span>,</span><br><span class="line">    <span class="comment">//经过的时间</span></span><br><span class="line">    duration:<span class="number">4192</span>,</span><br><span class="line">    <span class="comment">//舞台偏移的高度</span></span><br><span class="line">    top:<span class="number">100</span>,</span><br><span class="line">    <span class="comment">//弹幕文字大小</span></span><br><span class="line">    size:<span class="number">14</span>,</span><br><span class="line">    <span class="comment">//弹幕颜色</span></span><br><span class="line">    color:<span class="string">'#333'</span>,</span><br><span class="line">    <span class="comment">//内容</span></span><br><span class="line">    text:<span class="string">'我就是路过看看。。'</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    <span class="comment">//从何时开始</span></span><br><span class="line">    time:<span class="number">170</span>,</span><br><span class="line">    <span class="comment">//经过的时间</span></span><br><span class="line">    duration:<span class="number">6192</span>,</span><br><span class="line">    <span class="comment">//舞台偏移的高度</span></span><br><span class="line">    top:<span class="number">130</span>,</span><br><span class="line">    <span class="comment">//弹幕文字大小</span></span><br><span class="line">    size:<span class="number">16</span>,</span><br><span class="line">    <span class="comment">//弹幕颜色</span></span><br><span class="line">    color:<span class="string">'#00ff00'</span>,</span><br><span class="line">    <span class="comment">//内容</span></span><br><span class="line">    text:<span class="string">'我就静静的看着你装逼。。'</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    <span class="comment">//从何时开始</span></span><br><span class="line">    time:<span class="number">1000</span>,</span><br><span class="line">    <span class="comment">//经过的时间</span></span><br><span class="line">    duration:<span class="number">5992</span>,</span><br><span class="line">    <span class="comment">//舞台偏移的高度</span></span><br><span class="line">    top:<span class="number">150</span>,</span><br><span class="line">    <span class="comment">//弹幕文字大小</span></span><br><span class="line">    size:<span class="number">20</span>,</span><br><span class="line">    <span class="comment">//弹幕颜色</span></span><br><span class="line">    color:<span class="string">'#ff0000'</span>,</span><br><span class="line">    <span class="comment">//内容</span></span><br><span class="line">    text:<span class="string">'我和我的小伙伴都惊呆了～～'</span></span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line"><span class="comment">//弹幕的总时间（演出总时间）</span></span><br><span class="line"><span class="keyword">var</span> Time = <span class="number">9000</span>;</span><br><span class="line"><span class="comment">//检测时间间隔（每一场的时间）</span></span><br><span class="line"><span class="keyword">var</span> CheckTime = <span class="number">1000</span>;</span><br><span class="line"><span class="comment">//总场数</span></span><br><span class="line"><span class="keyword">var</span> PlayCount = <span class="built_in">Math</span>.ceil(Time / CheckTime);</span><br></pre></td></tr></table></figure>
+<p>剧本很简单,包括演出的总时间，每一场的时间，还有具体的每个演员的表演内容，规定了每个演员的入场时间（time）,表演的时间(duration),还有入场的位置(top)，还有演员的妆容(size,color,text)</p>
+<h3 id="3-我们还需要演员"><a href="#3-我们还需要演员" class="headerlink" title="3.我们还需要演员"></a>3.我们还需要演员</h3><p>作为一名合格的演员，需要具备那些素质呢？</p>
+<p>我们创建个演员的类：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//构造函数，传递一个剧本片段</span></span><br><span class="line"><span class="keyword">var</span> Actor = <span class="function"><span class="keyword">function</span>(<span class="params">play</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//保存剧本的副本</span></span><br><span class="line">    <span class="keyword">this</span>.play = play;</span><br><span class="line">    <span class="comment">//给自己化妆</span></span><br><span class="line">    <span class="keyword">this</span>.appearance = <span class="keyword">this</span>.makeUp();</span><br><span class="line">    <span class="comment">//自己走上舞台旁边准备上场</span></span><br><span class="line">    <span class="keyword">this</span>.appearance.hide().appendTo(stage);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//演员化妆，也就是最终呈现的样子</span></span><br><span class="line">Actor.prototype.makeUp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> appearance = $(<span class="string">'&lt;div style="min-width:400px;font-size:'</span>+<span class="keyword">this</span>.play.size +<span class="string">';color:'</span>+<span class="keyword">this</span>.play.color+<span class="string">';"&gt;'</span>+<span class="keyword">this</span>.play.text+<span class="string">'&lt;/div&gt;'</span>);</span><br><span class="line">    <span class="keyword">return</span> appearance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//演员上场飘过</span></span><br><span class="line">Actor.prototype.animate = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> appearance = that.appearance;</span><br><span class="line">    <span class="keyword">var</span> mywidth = appearance.width();</span><br><span class="line">    <span class="comment">//使用动画控制left</span></span><br><span class="line">    appearance.animate(&#123;</span><br><span class="line">        left:-mywidth</span><br><span class="line">    &#125;, that.play.duration,<span class="string">'swing'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        appearance.hide();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//演员开始表演</span></span><br><span class="line">Actor.prototype.perform = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> appearance = that.appearance;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//准备入场,先隐藏在幕布后面</span></span><br><span class="line">    appearance.css(&#123;</span><br><span class="line">        position:<span class="string">'absolute'</span>,</span><br><span class="line">        left: stage.width()+<span class="string">'px'</span>,</span><br><span class="line">        top:that.play.top||<span class="number">0</span>,</span><br><span class="line">        zIndex:<span class="number">10</span>,</span><br><span class="line">        display:<span class="string">'block'</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//确定入场偏移时间，入场表演</span></span><br><span class="line">    <span class="comment">//导演只会说第几场开始了，可不会还帮你具体到某个时间点，所以需要你自己计算好入场的时间。</span></span><br><span class="line">    <span class="keyword">var</span> delayTime = that.play.time - (that.play.session<span class="number">-1</span>) * CheckTime;</span><br><span class="line">    <span class="comment">//演员需要修正自己上场的时间</span></span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        that.animate();</span><br><span class="line">    &#125;,delayTime)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>演员类还是比较简单，构造函数调用后演员自己会化好妆等待入场。并且暴露出表演的方法perform。每个演员需要监听导演。当导演说了某个场次开始后，记得关注，入场表演即可。</p>
+<h3 id="4-好了我们还需要个导演，非常重要的调度者"><a href="#4-好了我们还需要个导演，非常重要的调度者" class="headerlink" title="4.好了我们还需要个导演，非常重要的调度者"></a>4.好了我们还需要个导演，非常重要的调度者</h3><p>导演需要具有事件机制，也就是我们常说的观察者模式，因为我们使用了jQuery，所以有现成的可以用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这样我们就得到了一个支持事件机制的对象。</span></span><br><span class="line"><span class="keyword">var</span> director = $(&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样所有的元素都已经齐全了，下面我们开始进行戏剧的前期准备过程。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//准备舞台（这个上面其实已经说了）</span></span><br><span class="line"><span class="keyword">var</span> stage = $(<span class="string">'#J_stage'</span>);</span><br><span class="line">stage.css(&#123;</span><br><span class="line">    position:<span class="string">'relative'</span>,</span><br><span class="line">    overflow:<span class="string">'hidden'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//导演开始说戏过剧本</span></span><br><span class="line"><span class="comment">//整理playList列表，组装事件</span></span><br><span class="line">$.each(playList,<span class="function"><span class="keyword">function</span>(<span class="params">k,play</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//确定演员，确定场次</span></span><br><span class="line">    <span class="keyword">var</span> session = <span class="built_in">Math</span>.ceil(play.time / CheckTime);</span><br><span class="line">    play.session = session;</span><br><span class="line">    <span class="comment">//剧本拿给演员,召唤一个演员</span></span><br><span class="line">    <span class="keyword">var</span> actor = <span class="keyword">new</span> Actor(play);</span><br><span class="line">    <span class="comment">//演员针对导演添加监听。</span></span><br><span class="line">    <span class="comment">//等导演说了这个场次后，就开始叫演员表演</span></span><br><span class="line">    director.on(session+<span class="string">'start'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        actor.perform();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>说戏也说完了，下面就开始正式表演啦：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">currentSession = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//第xx场开始表演</span></span><br><span class="line">    director.trigger(currentSession+<span class="string">'start'</span>);</span><br><span class="line">    <span class="comment">//从头再来一遍</span></span><br><span class="line">    <span class="keyword">if</span> (currentSession === PlayCount) &#123;</span><br><span class="line">        currentSession = <span class="number">0</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        currentSession++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;,CheckTime);</span><br></pre></td></tr></table></figure>
+<p><a href="https://codepen.io/cherishpeace/pen/jPGKXY" target="_blank" rel="noopener">https://codepen.io/cherishpeace/pen/jPGKXY</a></p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/08/06/9535/" class="pre-post btn btn-default" title='全面解析children在react中的应用'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">全面解析children在react中的应用</span>
+        </a>
+    
+    
+        <a href="/2018/08/06/9533/" class="next-post btn btn-default" title='React 图解'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">React 图解</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始动手实现"><span class="toc-text">开始动手实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-我们还需要演员"><span class="toc-text">3.我们还需要演员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-好了我们还需要个导演，非常重要的调度者"><span class="toc-text">4.好了我们还需要个导演，非常重要的调度者</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

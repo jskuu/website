@@ -1,0 +1,361 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>React Diff | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="React Diff">
+            
+	            React Diff
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/08/06</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>React diff 作为 Virtual DOM 的加速器，其算法上的改进优化是 React 整个界面渲染的基础，以及性能提高的保障，同时也是 React 源码中最神秘、最不可思议的部分，本文从源码入手，深入剖析 React diff 的不可思议之处。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>React 中最值得称道的部分莫过于 Virtual DOM 与 diff 的完美结合，特别是其高效的 diff 算法，让用户可以无需顾忌性能问题而”任性自由”的刷新页面，让开发者也可以无需关心 Virtual DOM 背后的运作原理，因为 React diff 会帮助我们计算出 Virtual DOM 中真正变化的部分，并只针对该部分进行实际 DOM 操作，而非重新渲染整个页面，从而保证了每次操作更新后页面的高效渲染，因此 Virtual DOM 与 diff 是保证 React 性能口碑的幕后推手。</p>
+<p>行文至此，可能会有读者质疑：React 无非就是引入 diff 这一概念，且 diff 算法也并非其首创，何必吹嘘的如此天花乱坠呢？</p>
+<p>其实，正是因为 diff 算法的普识度高，就更应该认可 React 针对 diff 算法优化所做的努力与贡献，更能体现 React 开发者们的魅力与智慧！</p>
+<h2 id="传统-diff-算法"><a href="#传统-diff-算法" class="headerlink" title="传统 diff 算法"></a>传统 diff 算法</h2><p>计算一棵树形结构转换成另一棵树形结构的最少操作，是一个复杂且值得研究的问题。传统 diff 算法通过循环递归对节点进行依次对比，效率低下，算法复杂度达到 O(n^3)，其中 n 是树中节点的总数。O(n^3) 到底有多可怕，这意味着如果要展示1000个节点，就要依次执行上十亿次的比较。这种指数型的性能消耗对于前端渲染场景来说代价太高了！现今的 CPU 每秒钟能执行大约30亿条指令，即便是最高效的实现，也不可能在一秒内计算出差异情况。</p>
+<p>如果 React 只是单纯的引入 diff 算法而没有任何的优化改进，那么其效率是远远无法满足前端渲染所要求的性能。</p>
+<p>因此，想要将 diff 思想引入 Virtual DOM，就需要设计一种稳定高效的 diff 算法，而 React 做到了！</p>
+<p>那么，React diff 到底是如何实现的呢？</p>
+<h3 id="详解-React-diff"><a href="#详解-React-diff" class="headerlink" title="详解 React diff"></a>详解 React diff</h3><p>传统 diff 算法的复杂度为 O(n^3)，显然这是无法满足性能要求的。React 通过制定大胆的策略，将 O(n^3) 复杂度的问题转换成 O(n) 复杂度的问题。</p>
+<h3 id="diff-策略"><a href="#diff-策略" class="headerlink" title="diff 策略"></a>diff 策略</h3><p>1.Web UI 中 DOM 节点跨层级的移动操作特别少，可以忽略不计。</p>
+<p>2.拥有相同类的两个组件将会生成相似的树形结构，拥有不同类的两个组件将会生成不同的树形结构。</p>
+<p>3.对于同一层级的一组子节点，它们可以通过唯一 id 进行区分。</p>
+<p>基于以上三个前提策略，React 分别对 tree diff、component diff 以及 element diff 进行算法优化，事实也证明这三个前提策略是合理且准确的，它保证了整体界面构建的性能。</p>
+<ul>
+<li><p>tree diff</p>
+</li>
+<li><p>component diff</p>
+</li>
+<li><p>element diff</p>
+</li>
+</ul>
+<h3 id="tree-diff"><a href="#tree-diff" class="headerlink" title="tree diff"></a>tree diff</h3><p>基于策略一，React 对树的算法进行了简洁明了的优化，即对树进行分层比较，两棵树只会对同一层次的节点进行比较。</p>
+<p>既然 DOM 节点跨层级的移动操作少到可以忽略不计，针对这一现象，React 通过 updateDepth 对 Virtual DOM 树进行层级控制，只会对相同颜色方框内的 DOM 节点进行比较，即同一个父节点下的所有子节点。当发现节点已经不存在，则该节点及其子节点会被完全删除掉，不会用于进一步的比较。这样只需要对树进行一次遍历，便能完成整个 DOM 树的比较。</p>
+<p><img src="https://pic3.zhimg.com/80/0c08dbb6b1e0745780de4d208ad51d34_hd.jpg" alt="1"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">updateChildren: <span class="function"><span class="keyword">function</span>(<span class="params">nextNestedChildrenElements, transaction, context</span>) </span>&#123;</span><br><span class="line">  updateDepth++;</span><br><span class="line">  <span class="keyword">var</span> errorThrown = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>._updateChildren(nextNestedChildrenElements, transaction, context);</span><br><span class="line">    errorThrown = <span class="literal">false</span>;</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    updateDepth--;</span><br><span class="line">    <span class="keyword">if</span> (!updateDepth) &#123;</span><br><span class="line">      <span class="keyword">if</span> (errorThrown) &#123;</span><br><span class="line">        clearQueue();</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        processQueue();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析至此，大部分人可能都存在这样的疑问：如果出现了 DOM 节点跨层级的移动操作，React diff 会有怎样的表现呢？是的，对此我也好奇不已，不如试验一番。</p>
+<p>如下图，A 节点（包括其子节点）整个被移动到 D 节点下，由于 React 只会简单的考虑同层级节点的位置变换，而对于不同层级的节点，只有创建和删除操作。当根节点发现子节点中 A 消失了，就会直接销毁 A；当 D 发现多了一个子节点 A，则会创建新的 A（包括子节点）作为其子节点。此时，React diff 的执行情况：create A -&gt; create B -&gt; create C -&gt; delete A。</p>
+<p>由此可发现，当出现节点跨层级移动时，并不会出现想象中的移动操作，而是以 A 为根节点的树被整个重新创建，这是一种影响 React 性能的操作，因此 React 官方建议不要进行 DOM 节点跨层级的操作。</p>
+<blockquote>
+<p>注意：在开发组件时，保持稳定的 DOM 结构会有助于性能的提升。例如，可以通过 CSS 隐藏或显示节点，而不是真的移除或添加 DOM 节点。</p>
+</blockquote>
+<p><img src="https://pic3.zhimg.com/80/d712a73769688afe1ef1a055391d99ed_hd.jpg" alt="2"></p>
+<h3 id="component-diff"><a href="#component-diff" class="headerlink" title="component diff"></a>component diff</h3><p>React 是基于组件构建应用的，对于组件间的比较所采取的策略也是简洁高效。</p>
+<ul>
+<li><p>如果是同一类型的组件，按照原策略继续比较 virtual DOM tree。</p>
+</li>
+<li><p>如果不是，则将该组件判断为 dirty component，从而替换整个组件下的所有子节点。</p>
+</li>
+<li><p>对于同一类型的组件，有可能其 Virtual DOM 没有任何变化，如果能够确切的知道这点那可以节省大量的 diff 运算时间，因此 React 允许用户通过 shouldComponentUpdate() 来判断该组件是否需要进行 diff。</p>
+</li>
+</ul>
+<p>如下图，当 component D 改变为 component G 时，即使这两个 component 结构相似，一旦 React 判断 D 和 G 是不同类型的组件，就不会比较二者的结构，而是直接删除 component D，重新创建 component G 以及其子节点。虽然当两个 component 是不同类型但结构相似时，React diff 会影响性能，但正如 React 官方博客所言：不同类型的 component 是很少存在相似 DOM tree 的机会，因此这种极端因素很难在实现开发过程中造成重大影响的。</p>
+<p><img src="https://pic4.zhimg.com/80/52654992aba15fc90e2dac8b2387d0c4_hd.jpg" alt="3"></p>
+<h3 id="element-diff"><a href="#element-diff" class="headerlink" title="element diff"></a>element diff</h3><p>当节点处于同一层级时，React diff 提供了三种节点操作，分别为：INSERT_MARKUP（插入）、MOVE_EXISTING（移动）和 REMOVE_NODE（删除）。</p>
+<ul>
+<li><p>INSERT_MARKUP，新的 component 类型不在老集合里， 即是全新的节点，需要对新节点执行插入操作。</p>
+</li>
+<li><p>MOVE_EXISTING，在老集合有新 component 类型，且 element 是可更新的类型，generateComponentChildren 已调用 receiveComponent，这种情况下 prevChild=nextChild，就需要做移动操作，可以复用以前的 DOM 节点。</p>
+</li>
+<li><p>REMOVE_NODE，老 component 类型，在新集合里也有，但对应的 element 不同则不能直接复用和更新，需要执行删除操作，或者老 component 不在新集合里的，也需要执行删除操作。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">enqueueInsertMarkup</span>(<span class="params">parentInst, markup, toIndex</span>) </span>&#123;</span><br><span class="line">  updateQueue.push(&#123;</span><br><span class="line">    parentInst: parentInst,</span><br><span class="line">    parentNode: <span class="literal">null</span>,</span><br><span class="line">    type: ReactMultiChildUpdateTypes.INSERT_MARKUP,</span><br><span class="line">    markupIndex: markupQueue.push(markup) - <span class="number">1</span>,</span><br><span class="line">    content: <span class="literal">null</span>,</span><br><span class="line">    fromIndex: <span class="literal">null</span>,</span><br><span class="line">    toIndex: toIndex,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">enqueueMove</span>(<span class="params">parentInst, fromIndex, toIndex</span>) </span>&#123;</span><br><span class="line">  updateQueue.push(&#123;</span><br><span class="line">    parentInst: parentInst,</span><br><span class="line">    parentNode: <span class="literal">null</span>,</span><br><span class="line">    type: ReactMultiChildUpdateTypes.MOVE_EXISTING,</span><br><span class="line">    markupIndex: <span class="literal">null</span>,</span><br><span class="line">    content: <span class="literal">null</span>,</span><br><span class="line">    fromIndex: fromIndex,</span><br><span class="line">    toIndex: toIndex,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">enqueueRemove</span>(<span class="params">parentInst, fromIndex</span>) </span>&#123;</span><br><span class="line">  updateQueue.push(&#123;</span><br><span class="line">    parentInst: parentInst,</span><br><span class="line">    parentNode: <span class="literal">null</span>,</span><br><span class="line">    type: ReactMultiChildUpdateTypes.REMOVE_NODE,</span><br><span class="line">    markupIndex: <span class="literal">null</span>,</span><br><span class="line">    content: <span class="literal">null</span>,</span><br><span class="line">    fromIndex: fromIndex,</span><br><span class="line">    toIndex: <span class="literal">null</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如下图，老集合中包含节点：A、B、C、D，更新后的新集合中包含节点：B、A、D、C，此时新老集合进行 diff 差异化对比，发现 B != A，则创建并插入 B 至新集合，删除老集合 A；以此类推，创建并插入 A、D 和 C，删除 B、C 和 D。</p>
+<p><img src="https://pic3.zhimg.com/80/7541670c089b84c59b84e9438e92a8e9_hd.jpg" alt="4"></p>
+<p>React 发现这类操作繁琐冗余，因为这些都是相同的节点，但由于位置发生变化，导致需要进行繁杂低效的删除、创建操作，其实只要对这些节点进行位置移动即可。</p>
+<p>针对这一现象，React 提出优化策略：允许开发者对同一层级的同组子节点，添加唯一 key 进行区分，虽然只是小小的改动，性能上却发生了翻天覆地的变化！</p>
+<p>新老集合所包含的节点，如下图所示，新老集合进行 diff 差异化对比，通过 key 发现新老集合中的节点都是相同的节点，因此无需进行节点删除和创建，只需要将老集合中节点的位置进行移动，更新为新集合中节点的位置，此时 React 给出的 diff 结果为：B、D 不做任何操作，A、C 进行移动操作，即可。</p>
+<p><img src="https://pic3.zhimg.com/80/c0aa97d996de5e7f1069e97ca3accfeb_hd.jpg" alt="5"></p>
+<p>那么，如此高效的 diff 到底是如何运作的呢？让我们通过源码进行详细分析。</p>
+<p>首先对新集合的节点进行循环遍历，for (name in nextChildren)，通过唯一 key 可以判断新老集合中是否存在相同的节点，if (prevChild === nextChild)，如果存在相同节点，则进行移动操作，但在移动前需要将当前节点在老集合中的位置与 lastIndex 进行比较，if (child._mountIndex &lt; lastIndex)，则进行节点移动操作，否则不执行该操作。这是一种顺序优化手段，lastIndex 一直在更新，表示访问过的节点在老集合中最右的位置（即最大的位置），如果新集合中当前访问的节点比 lastIndex 大，说明当前访问节点在老集合中就比上一个节点位置靠后，则该节点不会影响其他节点的位置，因此不用添加到差异队列中，即不执行移动操作，只有当访问的节点比 lastIndex 小时，才需要进行移动操作。</p>
+<p>以上图为例，可以更为清晰直观的描述 diff 的差异对比过程：</p>
+<ul>
+<li><p>从新集合中取得 B，判断老集合中存在相同节点 B，通过对比节点位置判断是否进行移动操作，B 在老集合中的位置 B._mountIndex = 1，此时 lastIndex = 0，不满足 child._mountIndex &lt; lastIndex 的条件，因此不对 B 进行移动操作；更新 lastIndex = Math.max(prevChild._mountIndex, lastIndex)，其中 prevChild._mountIndex 表示 B 在老集合中的位置，则 lastIndex ＝ 1，并将 B 的位置更新为新集合中的位置prevChild._mountIndex = nextIndex，此时新集合中 B._mountIndex = 0，nextIndex++ 进入下一个节点的判断。</p>
+</li>
+<li><p>从新集合中取得 A，判断老集合中存在相同节点 A，通过对比节点位置判断是否进行移动操作，A 在老集合中的位置 A._mountIndex = 0，此时 lastIndex = 1，满足 child._mountIndex &lt; lastIndex的条件，因此对 A 进行移动操作enqueueMove(this, child._mountIndex, toIndex)，其中 toIndex 其实就是 nextIndex，表示 A 需要移动到的位置；更新 lastIndex = Math.max(prevChild._mountIndex, lastIndex)，则 lastIndex ＝ 1，并将 A 的位置更新为新集合中的位置 prevChild._mountIndex = nextIndex，此时新集合中A._mountIndex = 1，nextIndex++ 进入下一个节点的判断。</p>
+</li>
+</ul>
+<ul>
+<li><p>从新集合中取得 D，判断老集合中存在相同节点 D，通过对比节点位置判断是否进行移动操作，D 在老集合中的位置 D._mountIndex = 3，此时 lastIndex = 1，不满足 child._mountIndex &lt; lastIndex的条件，因此不对 D 进行移动操作；更新 lastIndex = Math.max(prevChild._mountIndex, lastIndex)，则 lastIndex ＝ 3，并将 D 的位置更新为新集合中的位置 prevChild._mountIndex = nextIndex，此时新集合中D._mountIndex = 2，nextIndex++ 进入下一个节点的判断。</p>
+</li>
+<li><p>从新集合中取得 C，判断老集合中存在相同节点 C，通过对比节点位置判断是否进行移动操作，C 在老集合中的位置 C._mountIndex = 2，此时 lastIndex = 3，满足 child._mountIndex &lt; lastIndex 的条件，因此对 C 进行移动操作 enqueueMove(this, child._mountIndex, toIndex)；更新 lastIndex = Math.max(prevChild._mountIndex, lastIndex)，则 lastIndex ＝ 3，并将 C 的位置更新为新集合中的位置 prevChild._mountIndex = nextIndex，此时新集合中 C._mountIndex = 3，nextIndex++ 进入下一个节点的判断，由于 C 已经是最后一个节点，因此 diff 到此完成。</p>
+</li>
+</ul>
+<p>以上主要分析新老集合中存在相同节点但位置不同时，对节点进行位置移动的情况，如果新集合中有新加入的节点且老集合存在需要删除的节点，那么 React diff 又是如何对比运作的呢？</p>
+<p>以下图为例：</p>
+<ul>
+<li>从新集合中取得 B，判断老集合中存在相同节点 B，由于 B 在老集合中的位置 B._mountIndex = 1，此时lastIndex = 0，因此不对 B 进行移动操作；更新 lastIndex ＝ 1，并将 B 的位置更新为新集合中的位置B._mountIndex = 0，nextIndex++进入下一个节点的判断。</li>
+</ul>
+<ul>
+<li><p>从新集合中取得 E，判断老集合中不存在相同节点 E，则创建新节点 E；更新 lastIndex ＝ 1，并将 E 的位置更新为新集合中的位置，nextIndex++进入下一个节点的判断。</p>
+</li>
+<li><p>从新集合中取得 C，判断老集合中存在相同节点 C，由于 C 在老集合中的位置C._mountIndex = 2，lastIndex = 1，此时 C._mountIndex &gt; lastIndex，因此不对 C 进行移动操作；更新 lastIndex ＝ 2，并将 C 的位置更新为新集合中的位置，nextIndex++ 进入下一个节点的判断。</p>
+</li>
+<li><p>从新集合中取得 A，判断老集合中存在相同节点 A，由于 A 在老集合中的位置A._mountIndex = 0，lastIndex = 2，此时 A._mountIndex &lt; lastIndex，因此对 A 进行移动操作；更新 lastIndex ＝ 2，并将 A 的位置更新为新集合中的位置，nextIndex++ 进入下一个节点的判断。</p>
+</li>
+<li><p>当完成新集合中所有节点 diff 时，最后还需要对老集合进行循环遍历，判断是否存在新集合中没有但老集合中仍存在的节点，发现存在这样的节点 D，因此删除节点 D，到此 diff 全部完成。</p>
+</li>
+</ul>
+<p><img src="https://pic2.zhimg.com/80/7b9beae0cf0a5bc8c2e82d00c43d1c90_hd.jpg" alt="6"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">_updateChildren: <span class="function"><span class="keyword">function</span>(<span class="params">nextNestedChildrenElements, transaction, context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> prevChildren = <span class="keyword">this</span>._renderedChildren;</span><br><span class="line">  <span class="keyword">var</span> nextChildren = <span class="keyword">this</span>._reconcilerUpdateChildren(</span><br><span class="line">    prevChildren, nextNestedChildrenElements, transaction, context</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">if</span> (!nextChildren &amp;&amp; !prevChildren) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> name;</span><br><span class="line">  <span class="keyword">var</span> lastIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> nextIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (name <span class="keyword">in</span> nextChildren) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!nextChildren.hasOwnProperty(name)) &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> prevChild = prevChildren &amp;&amp; prevChildren[name];</span><br><span class="line">    <span class="keyword">var</span> nextChild = nextChildren[name];</span><br><span class="line">    <span class="keyword">if</span> (prevChild === nextChild) &#123;</span><br><span class="line">      <span class="comment">// 移动节点</span></span><br><span class="line">      <span class="keyword">this</span>.moveChild(prevChild, nextIndex, lastIndex);</span><br><span class="line">      lastIndex = <span class="built_in">Math</span>.max(prevChild._mountIndex, lastIndex);</span><br><span class="line">      prevChild._mountIndex = nextIndex;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (prevChild) &#123;</span><br><span class="line">        lastIndex = <span class="built_in">Math</span>.max(prevChild._mountIndex, lastIndex);</span><br><span class="line">        <span class="comment">// 删除节点</span></span><br><span class="line">        <span class="keyword">this</span>._unmountChild(prevChild);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 初始化并创建节点</span></span><br><span class="line">      <span class="keyword">this</span>._mountChildAtIndex(</span><br><span class="line">        nextChild, nextIndex, transaction, context</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">    nextIndex++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (name <span class="keyword">in</span> prevChildren) &#123;</span><br><span class="line">    <span class="keyword">if</span> (prevChildren.hasOwnProperty(name) &amp;&amp;</span><br><span class="line">        !(nextChildren &amp;&amp; nextChildren.hasOwnProperty(name))) &#123;</span><br><span class="line">      <span class="keyword">this</span>._unmountChild(prevChildren[name]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>._renderedChildren = nextChildren;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 移动节点</span></span><br><span class="line">moveChild: <span class="function"><span class="keyword">function</span>(<span class="params">child, toIndex, lastIndex</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (child._mountIndex &lt; lastIndex) &#123;</span><br><span class="line">    <span class="keyword">this</span>.prepareToManageChildren();</span><br><span class="line">    enqueueMove(<span class="keyword">this</span>, child._mountIndex, toIndex);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 创建节点</span></span><br><span class="line">createChild: <span class="function"><span class="keyword">function</span>(<span class="params">child, mountImage</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.prepareToManageChildren();</span><br><span class="line">  enqueueInsertMarkup(<span class="keyword">this</span>, mountImage, child._mountIndex);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 删除节点</span></span><br><span class="line">removeChild: <span class="function"><span class="keyword">function</span>(<span class="params">child</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.prepareToManageChildren();</span><br><span class="line">  enqueueRemove(<span class="keyword">this</span>, child._mountIndex);</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">_unmountChild: <span class="function"><span class="keyword">function</span>(<span class="params">child</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.removeChild(child);</span><br><span class="line">  child._mountIndex = <span class="literal">null</span>;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">_mountChildAtIndex: <span class="function"><span class="keyword">function</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  child,</span></span></span><br><span class="line"><span class="function"><span class="params">  index,</span></span></span><br><span class="line"><span class="function"><span class="params">  transaction,</span></span></span><br><span class="line"><span class="function"><span class="params">  context</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> mountImage = ReactReconciler.mountComponent(</span><br><span class="line">    child,</span><br><span class="line">    transaction,</span><br><span class="line">    <span class="keyword">this</span>,</span><br><span class="line">    <span class="keyword">this</span>._nativeContainerInfo,</span><br><span class="line">    context</span><br><span class="line">  );</span><br><span class="line">  child._mountIndex = index;</span><br><span class="line">  <span class="keyword">this</span>.createChild(child, mountImage);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>当然，React diff 还是存在些许不足与待优化的地方，如下图所示，若新集合的节点更新为：D、A、B、C，与老集合对比只有 D 节点移动，而 A、B、C 仍然保持原有的顺序，理论上 diff 应该只需对 D 执行移动操作，然而由于 D 在老集合的位置是最大的，导致其他节点的 _mountIndex &lt; lastIndex，造成 D 没有执行移动操作，而是 A、B、C 全部移动到 D 节点后面的现象。</p>
+<h3 id="在此，读者们可以讨论思考：如何优化上述问题？"><a href="#在此，读者们可以讨论思考：如何优化上述问题？" class="headerlink" title="在此，读者们可以讨论思考：如何优化上述问题？"></a>在此，读者们可以讨论思考：如何优化上述问题？</h3><blockquote>
+<p>建议：在开发过程中，尽量减少类似将最后一个节点移动到列表首部的操作，当节点数量过大或更新操作过于频繁时，在一定程度上会影响 React 的渲染性能。</p>
+</blockquote>
+<p><img src="https://pic4.zhimg.com/80/1b8dac5b9b3e4452dec8d5447d7717ad_hd.jpg" alt="7"></p>
+<p>总结</p>
+<ul>
+<li>React 通过制定大胆的 diff 策略，将 O(n3) 复杂度的问题转换成 O(n) 复杂度的问题；</li>
+<li>React 通过分层求异的策略，对 tree diff 进行算法优化；</li>
+<li>React 通过相同类生成相似树形结构，不同类生成不同树形结构的策略，对 component diff 进行算法- 优化；</li>
+<li>React 通过设置唯一 key的策略，对 element diff 进行算法优化；</li>
+<li>建议，在开发组件时，保持稳定的 DOM 结构会有助于性能的提升；</li>
+<li>建议，在开发过程中，尽量减少类似将最后一个节点移动到列表首部的操作，当节点数量过大或更新操作过于频繁时，在一定程度上会影响 React 的渲染性能。</li>
+</ul>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/08/06/9533/" class="pre-post btn btn-default" title='React 图解'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">React 图解</span>
+        </a>
+    
+    
+        <a href="/2018/08/06/9531/" class="next-post btn btn-default" title='理解ReactElement和ReactClass的概念'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">理解ReactElement和ReactClass的概念</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传统-diff-算法"><span class="toc-text">传统 diff 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#详解-React-diff"><span class="toc-text">详解 React diff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#diff-策略"><span class="toc-text">diff 策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tree-diff"><span class="toc-text">tree diff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#component-diff"><span class="toc-text">component diff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#element-diff"><span class="toc-text">element diff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在此，读者们可以讨论思考：如何优化上述问题？"><span class="toc-text">在此，读者们可以讨论思考：如何优化上述问题？</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

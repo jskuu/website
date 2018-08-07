@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "gulp dev",
+    "build": "hexo g",
     "watch": "hexo clean && hexo g && hexo s -p 4000"
   },
   "dependencies": {
