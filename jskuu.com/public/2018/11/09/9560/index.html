@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>Array | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Array">
+            
+	            Array
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/09</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="用-Array-includes代替Array-indexOf"><a href="#用-Array-includes代替Array-indexOf" class="headerlink" title="用 Array.includes代替Array.indexOf"></a>用 Array.includes代替Array.indexOf</h1><p>“如果想在数组中查找某些内容，请使用Array. indexof”。我记得在学习JavaScript的时候，我在课上读过这样一句话。毫无疑问，这句话是千真万确的!</p>
+<p>Array.indexOf “返回可以找到给定元素的第一个索引”，MDN文档这样说。因此，如果我们稍后在代码和数组中使用返回的索引。indexOf是解决方案。</p>
+<p>但是，如果我们只需要知道数组是否包含一个值，该怎么办?看起来像是一个是/否的问题，一个布尔问题。像这种情况，我推荐使用返回布尔值的Array.includes。</p>
+<h1 id="使用Array-find-代替Array-filter"><a href="#使用Array-find-代替Array-filter" class="headerlink" title="使用Array.find 代替Array.filter"></a>使用Array.find 代替Array.filter</h1><p>Array.filter是一个非常有用的方法。它从另一个数组中创建一个新数组，所有项都传递回调参数。 如其名称所示，我们必须使用此方法进行过滤，并获得更短的数组。</p>
+<p>但是，如果知道我们的回调函数只能返回一个项，我将不会推荐它，例如，当使用一个通过唯一ID过滤的回调参数时。在这种情况，Array.filter 将会返回一个新的只含有一个项数组。通过查找特定的ID，我们的意图可能是使用数组中包含的唯一值，使这个数组无用。</p>
+<p>一起讨论下性能，为了返回所有与回调函数数组匹配的项。Array.filter必须遍历整个数组。 此外, 想象一下，如果返回值有数百个是符合的项 ，过滤数组将变得非常庞大。</p>
+<p>为了避免这些情况，我推荐Array.find.它需要一个像 Array.filter的回调参数，它返回满足这个回调的第一个元素的值。此外，Array.find 当项返回回调的时停止，它不需要浏览全部数组。</p>
+<h1 id="使用Array-some代替Array-find"><a href="#使用Array-some代替Array-find" class="headerlink" title="使用Array.some代替Array.find"></a>使用Array.some代替Array.find</h1><p>我承认我犯过很多次这个错误，然而，一个好朋友告诉我，检查 MDN documentation 是一个很好的方法。事情是这样的:这与我们的Array. indexof /Array.includes 非常相似。</p>
+<p>在前面的例子中，我们看到了Array.find需要一个回调作为参数，并返回一个元素。如果我们需要知道数组中是否包含值，那么Array.find是最佳解决方案?可能不会，因为它返回一个值，而不是一个布尔值。</p>
+<p>像这种情况，我推荐使用Array.some 返回一个需要的布尔值。</p>
+<p>#使用Array.reduce代替Array.filter连接Array.map</p>
+<p>事实上，理解Array.reduce并不简单。这是真的，但是，如果我们执行 Array.filter, 然后执行Array.map 看起来像遗漏了些什么对吧？</p>
+<p>我的意思是，这里我们遍历了两遍数组。第一次过滤并生成一个短数组，第二次通过Array.filter又创造了新的数组，包含基于获得的新值。为了得到新的数组，我们使用了两个Array方法。每个方法有自己的回调函数和一个以后不能使用的数组—由Array.filter创建数组。</p>
+<p>为了避免在这个问题上表现不佳, 我建议使用Array.reduce 来代替.同样的结果，更完美的代码！Array.reduce 允许您过滤和添加满意的项目累加器。例如, 这个累加器可以是要递增的数字、要填充的对象、要连接的字符串或数组。</p>
+<p>在我们的例子中，自从我们使用 Array.map,我推荐使用Array.reduce 作为数组累加器. 在下面的例子中, 根据env的值, 我们将把它添加到累加器中，或者让这个累加器保持原样。</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/11/09/9561/" class="pre-post btn btn-default" title='lerna'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">lerna</span>
+        </a>
+    
+    
+        <a href="/2018/11/09/9559/" class="next-post btn btn-default" title='websocket'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">websocket</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#用-Array-includes代替Array-indexOf"><span class="toc-text">用 Array.includes代替Array.indexOf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Array-find-代替Array-filter"><span class="toc-text">使用Array.find 代替Array.filter</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Array-some代替Array-find"><span class="toc-text">使用Array.some代替Array.find</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

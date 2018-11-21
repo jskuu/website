@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>window.performance | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="window.performance">
+            
+	            window.performance
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/10/29</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>性能往往是做前端的热点，但是也最容易被大家所忽略</p>
+<p>下面是一个检测性能的网站</p>
+<p><a href="www.17ce.com">17ce.com</a></p>
+<p>说到性能就会想到 chrome devtools 里面的 performance  通常我们都会用 performance 查看一些简单的指标，而今天我们要说的 是 <code>window.performance</code></p>
+<h3 id="性能涵盖很广，我们大概分为以下几类"><a href="#性能涵盖很广，我们大概分为以下几类" class="headerlink" title="性能涵盖很广，我们大概分为以下几类"></a>性能涵盖很广，我们大概分为以下几类</h3><ul>
+<li>白屏时间</li>
+<li>首屏时间</li>
+<li>用户可操作时间节点</li>
+<li>总下载时间</li>
+</ul>
+<h4 id="白屏时间"><a href="#白屏时间" class="headerlink" title="白屏时间"></a>白屏时间</h4><p>白屏时间节点指的是从用户进入网站（输入url、刷新、跳转等方式）的时刻开始计算，一直到页面有内容展示出来的时间节点。这个过程包括dns查询、建立tcp连接、发送首个http请求（如果使用https还要介入TLS的验证时间）、返回html文档、html文档head解析完毕。</p>
+<h4 id="首屏时间"><a href="#首屏时间" class="headerlink" title="首屏时间"></a>首屏时间</h4><p>首屏时间的统计比较复杂，目前应用比较广的方案是将首屏的图片、iframe等资源添加onload事件，获取最慢的一个。</p>
+<p>这种方案比较适合首屏元素数量固定的页面，比如移动端首屏不论屏幕大小都展示相同数量的内容，响应式得改变内容的字体、尺寸等。但是对于首屏元素不固定的页面，这种方案并不适用，最典型的就是PC端页面，不同屏幕尺寸下展示的首屏内容不同。上述方案便不适用于此场景。</p>
+<h4 id="可操作时间"><a href="#可操作时间" class="headerlink" title="可操作时间"></a>可操作时间</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//.. do stuff ..</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// # or</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, load2, <span class="literal">false</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">window</span>.attachEvent(<span class="string">'onload'</span>, load2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="总下载时间"><a href="#总下载时间" class="headerlink" title="总下载时间"></a>总下载时间</h4><p>总下载时间即window.onload触发的时间节点。</p>
+<h3 id="使用-window-performance-API"><a href="#使用-window-performance-API" class="headerlink" title="使用 window.performance API"></a>使用 window.performance API</h3><p>window.performance 下有三个值得关注的 参数</p>
+<ul>
+<li>memory</li>
+<li>navigation</li>
+<li>timing</li>
+</ul>
+<h4 id="memory"><a href="#memory" class="headerlink" title="memory"></a>memory</h4><p>memory字段代表JavaScript对内存的占用。</p>
+<h4 id="navigation"><a href="#navigation" class="headerlink" title="navigation"></a>navigation</h4><p>redirectCount:重定向的数量（只读），但是这个接口有同源策略限制，即仅能检测同源的重定向；<br>type 返回值应该是0,1,2 中的一个。分别对应三个枚举值:<br>0 : TYPE_NAVIGATE (用户通过常规导航方式访问页面，比如点一个链接，或者一般的get方式)<br>1 : TYPE_RELOAD (用户通过刷新，包括JS调用刷新接口等方式访问页面)<br>2 : TYPE_BACK_FORWARD (用户通过后退按钮访问本页面)</p>
+<h4 id="timing"><a href="#timing" class="headerlink" title="timing"></a>timing</h4><ul>
+<li>startTime：有些浏览器实现为navigationStart，代表浏览器开始unload前一个页面文档的开始时间节点。比如我们当前正在浏览baidu.com，在地址栏输入google.com并回车，浏览器的执行动作依次为：unload当前文档（即baidu.com）-&gt;请求下一文档（即google.com）。navigationStart的值便是触发unload当前文档的时间节点。</li>
+</ul>
+<p><strong>如果当前文档为空，则navigationStart的值等于fetchStart。</strong></p>
+<ul>
+<li>redirectStart和redirectEnd：如果页面是由redirect而来，则redirectStart和redirectEnd分别代表redirect开始和结束的时间节点；</li>
+<li>unloadEventStart和unloadEventEnd：如果前一个文档和请求的文档是同一个域的，则unloadEventStart和unloadEventEnd分别代表浏览器unload前一个文档的开始和结束时间节点。否则两者都等于0；</li>
+<li>fetchStart是指在浏览器发起任何请求之前的时间值。在fetchStart和domainLookupStart之间，浏览器会检查当前文档的缓存；</li>
+<li>domainLookupStart和domainLookupEnd分别代表DNS查询的开始和结束时间节点。如果浏览器没有进行DNS查询（比如使用了cache），则两者的值都等于fetchStart；</li>
+<li>connectStart和connectEnd分别代表TCP建立连接和连接成功的时间节点。如果浏览器没有进行TCP连接（比如使用持久化连接webscoket），则两者都等于domainLookupEnd；</li>
+<li>secureConnectionStart：可选。如果页面使用HTTPS，它的值是安全连接握手之前的时刻。如果该属性不可用，则返回undefined。如果该属性可用，但没有使用HTTPS，则返回0；</li>
+<li>requestStart代表浏览器发起请求的时间节点，请求的方式可以是请求服务器、缓存、本地资源等；</li>
+<li>responseStart和responseEnd分别代表浏览器收到从服务器端（或缓存、本地资源）响应回的第一个字节和最后一个字节数据的时刻；</li>
+<li>domLoading代表浏览器开始解析html文档的时间节点。我们知道IE浏览器下的document有readyState属性，domLoading的值就等于readyState改变为loading的时间节点；</li>
+<li>domInteractive代表浏览器解析html文档的状态为interactive时的时间节点。domInteractive并非DOMReady，它早于DOMReady触发，代表html文档解析完毕（即dom tree创建完成）但是内嵌资源（比如外链css、js等）还未加载的时间点；</li>
+<li>domContentLoadedEventStart：代表DOMContentLoaded事件触发的时间节点：</li>
+</ul>
+<p><strong>页面文档完全加载并解析完毕之后,会触发DOMContentLoaded事件，HTML文档不会等待样式文件,图片文件,子框架页面的加载(load事件可以用来检测HTML页面是否完全加载完毕(fully-loaded))。</strong></p>
+<ul>
+<li>domContentLoadedEventEnd：代表DOMContentLoaded事件完成的时间节点，此刻用户可以对页面进行操作，也就是jQuery中的domready时间；</li>
+<li>domComplete：html文档完全解析完毕的时间节点；</li>
+<li>loadEventStart和loadEventEnd分别代表onload事件触发和结束的时间节点</li>
+</ul>
+<h3 id="计算性能指标"><a href="#计算性能指标" class="headerlink" title="计算性能指标"></a>计算性能指标</h3><p>可以使用Navigation.timing 统计到的时间数据来计算一些页面性能指标，比如DNS查询耗时、白屏时间、domready等等。如下：</p>
+<ul>
+<li>DNS查询耗时 = domainLookupEnd - domainLookupStart</li>
+<li>TCP链接耗时 = connectEnd - connectStart</li>
+<li>request请求耗时 = responseEnd - responseStart</li>
+<li>解析dom树耗时 = domComplete - domInteractive</li>
+<li>白屏时间 = domloadng - fetchStart</li>
+<li>domready时间 = domContentLoadedEventEnd - fetchStart</li>
+<li>onload时间 = loadEventEnd - fetchStart</li>
+</ul>
+<h4 id="performance-getEntries方法，它可以获取页面中每个静态资源的请求，如下："><a href="#performance-getEntries方法，它可以获取页面中每个静态资源的请求，如下：" class="headerlink" title="performance.getEntries方法，它可以获取页面中每个静态资源的请求，如下："></a>performance.getEntries方法，它可以获取页面中每个静态资源的请求，如下：</h4><p>performance.getEntries返回一个数组，数组的每个元素代表对应的静态资源的信息，比如上图展示的第一个元素对应的资源类型initiatorType是图片img，请求花费的时间就是duration的值。</p>
+<h4 id="performance-now-方法"><a href="#performance-now-方法" class="headerlink" title="performance.now 方法"></a>performance.now 方法</h4><p>返回一个DOMHighResTimeStamp对象，获取从timing.navigationStart开始到调用该方法的时间，精确到千分之五毫秒（5微秒）。</p>
+<p>下面是该方法的使用场景之一：通过计算代码块的起始位置以及结束位置performance.now()的差值，来获取一个比较精确的代码执行时间。</p>
+<p>看代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> startTime, endTime;</span><br><span class="line"></span><br><span class="line">startTime = <span class="built_in">window</span>.performance.now();</span><br><span class="line"></span><br><span class="line">doSomething();</span><br><span class="line"></span><br><span class="line">endTime = <span class="built_in">window</span>.performance.now();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(endTime - startTime);</span><br></pre></td></tr></table></figure>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算加载时间</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPerformanceTiming</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="keyword">var</span> performance = <span class="built_in">window</span>.performance;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> (!performance) &#123;</span><br><span class="line">        <span class="comment">// 当前浏览器不支持</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'你的浏览器不支持 performance 接口'</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">var</span> t = performance.timing;</span><br><span class="line">    <span class="keyword">var</span> times = &#123;&#125;;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//【重要】页面加载完成的时间</span></span><br><span class="line">    <span class="comment">//【原因】这几乎代表了用户等待页面可用的时间</span></span><br><span class="line">    times.loadPage = t.loadEventEnd - t.navigationStart;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//【重要】解析 DOM 树结构的时间</span></span><br><span class="line">    <span class="comment">//【原因】反省下你的 DOM 树嵌套是不是太多了！</span></span><br><span class="line">    times.domReady = t.domComplete - t.responseEnd;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//【重要】重定向的时间</span></span><br><span class="line">    <span class="comment">//【原因】拒绝重定向！比如，http://example.com/ 就不该写成 http://example.com</span></span><br><span class="line">    times.redirect = t.redirectEnd - t.redirectStart;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//【重要】DNS 查询时间</span></span><br><span class="line">    <span class="comment">//【原因】DNS 预加载做了么？页面内是不是使用了太多不同的域名导致域名查询的时间太长？</span></span><br><span class="line">    <span class="comment">// 可使用 HTML5 Prefetch 预查询 DNS ，见：[HTML5 prefetch](http://segmentfault.com/a/1190000000633364)           </span></span><br><span class="line">    times.lookupDomain = t.domainLookupEnd - t.domainLookupStart;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//【重要】读取页面第一个字节的时间</span></span><br><span class="line">    <span class="comment">//【原因】这可以理解为用户拿到你的资源占用的时间，加异地机房了么，加CDN 处理了么？加带宽了么？加 CPU 运算速度了么？</span></span><br><span class="line">    <span class="comment">// TTFB 即 Time To First Byte 的意思</span></span><br><span class="line">    <span class="comment">// 维基百科：https://en.wikipedia.org/wiki/Time_To_First_Byte</span></span><br><span class="line">    times.ttfb = t.responseStart - t.navigationStart;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//【重要】内容加载完成的时间</span></span><br><span class="line">    <span class="comment">//【原因】页面内容经过 gzip 压缩了么，静态资源 css/js 等压缩了么？</span></span><br><span class="line">    times.request = t.responseEnd - t.requestStart;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//【重要】执行 onload 回调函数的时间</span></span><br><span class="line">    <span class="comment">//【原因】是否太多不必要的操作都放到 onload 回调函数里执行了，考虑过延迟加载、按需加载的策略么？</span></span><br><span class="line">    times.loadEvent = t.loadEventEnd - t.loadEventStart;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// DNS 缓存时间</span></span><br><span class="line">    times.appcache = t.domainLookupStart - t.fetchStart;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 卸载页面的时间</span></span><br><span class="line">    times.unloadEvent = t.unloadEventEnd - t.unloadEventStart;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// TCP 建立连接完成握手的时间</span></span><br><span class="line">    times.connect = t.connectEnd - t.connectStart;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> times;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/10/29/9554/" class="pre-post btn btn-default" title='getComputedStyle 与 getPropertyValue'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">getComputedStyle 与 getPropertyValue</span>
+        </a>
+    
+    
+        <a href="/2018/10/26/9552/" class="next-post btn btn-default" title='Math.sin  Math.cos 详解'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Math.sin  Math.cos 详解</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#性能涵盖很广，我们大概分为以下几类"><span class="toc-text">性能涵盖很广，我们大概分为以下几类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#白屏时间"><span class="toc-text">白屏时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#首屏时间"><span class="toc-text">首屏时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可操作时间"><span class="toc-text">可操作时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总下载时间"><span class="toc-text">总下载时间</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-window-performance-API"><span class="toc-text">使用 window.performance API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#memory"><span class="toc-text">memory</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#navigation"><span class="toc-text">navigation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#timing"><span class="toc-text">timing</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算性能指标"><span class="toc-text">计算性能指标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#performance-getEntries方法，它可以获取页面中每个静态资源的请求，如下："><span class="toc-text">performance.getEntries方法，它可以获取页面中每个静态资源的请求，如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#performance-now-方法"><span class="toc-text">performance.now 方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

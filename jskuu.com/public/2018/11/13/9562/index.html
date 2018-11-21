@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>git 分支管理 | WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1274315707 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274315707%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <wb:follow-button uid="5435940750" type="red_2" width="136" height="24" ></wb:follow-button>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">WEB前端开发 - 专注前端开发        -专注前端开发，关注用户体验</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="javascript:;"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="git 分支管理">
+            
+	            git 分支管理
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/13</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>还是记录下git 常用操作吧</p>
+<h2 id="git文档"><a href="#git文档" class="headerlink" title="git文档"></a>git文档</h2><ul>
+<li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰</a></li>
+<li><a href="https://juejin.im/post/59f439276fb9a045167c727b" target="_blank" rel="noopener">git 常见命令 </a></li>
+<li><a href="https://mp.weixin.qq.com/s/-siW5-Zem84AJlEsnW8WZw" target="_blank" rel="noopener">git 高级命令实践</a></li>
+<li><a href="http://blog.csdn.net/u014346301/article/details/53742679" target="_blank" rel="noopener">git 命令大全</a></li>
+<li><a href="https://www.oschina.net/translate/a-successful-git-branching-model" target="_blank" rel="noopener">新的分支模式</a></li>
+<li><a href="http://blog.jobbole.com/110052/" target="_blank" rel="noopener">git开发流程</a></li>
+</ul>
+<p><img src="http://pi41gdadg.bkt.clouddn.com/20161219162011600.png" alt="0"><br><img src="http://pi41gdadg.bkt.clouddn.com/4763463-c4b54efaa851d538.png" alt="3"></p>
+<h2 id="拉取代码"><a href="#拉取代码" class="headerlink" title="拉取代码"></a>拉取代码</h2><h3 id="拉取远端指定分支到本地"><a href="#拉取远端指定分支到本地" class="headerlink" title="拉取远端指定分支到本地"></a>拉取远端指定分支到本地</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b gh-pages origin/ghpages</span><br><span class="line">如果报错</span><br><span class="line">git fetch 一下再执行上面的命令</span><br></pre></td></tr></table></figure>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -D br <span class="comment"># 删除本地分支 </span></span><br><span class="line">git push origin --delete [branchname] or  git push origin :br  (origin 后面有空格) <span class="comment"># 删除远端分支</span></span><br></pre></td></tr></table></figure>
+<h2 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">"xxx"</span> <span class="comment"># 普通提交 </span></span><br><span class="line">$ git commit —amend 优点是不会产生新的commit-id <span class="comment"># 追加提交</span></span><br></pre></td></tr></table></figure>
+<h2 id="git-tag"><a href="#git-tag" class="headerlink" title="git tag"></a>git tag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v1.4 -m <span class="string">'1'</span> <span class="comment"># 新建tag</span></span><br><span class="line">git tag <span class="comment"># 查看本地tag </span></span><br><span class="line">git push origin v1.5 <span class="comment"># 发布到origin </span></span><br><span class="line">git push origin --tags <span class="comment"># 一次推送所有本地tag到远端：</span></span><br><span class="line">git show v1.4 <span class="comment"># 查看分支信息  </span></span><br><span class="line">git push origin --delete tag [tagname] <span class="comment"># 删除远端tag</span></span><br></pre></td></tr></table></figure>
+<h2 id="撤销代码"><a href="#撤销代码" class="headerlink" title="撤销代码"></a>撤销代码</h2><p>查看帮助 $ git reset -h</p>
+<ul>
+<li>如果修改了本地代码没有add，可以通过  $ Git checkout [file] 删除工作区的修改</li>
+<li>已经add到索引区没有commit 可先 $ git reset [HEAD] [file] 从索引区删除  再 $ Git checkout [file] 从工作区删除</li>
+<li>已commit未push<br>1) soft 可使用 $ git reset –soft dev~1  将最后一次提交 撤回到索引区<br>2) mixed $ git reset dev~1 将最后一次提交撤回到工作区<br>3) hard  $ git reset —hard dev~1 撤销最后一次commit 记录并且 把工作区的修改也删除了 需谨慎使用</li>
+</ul>
+<p><img src="http://pi41gdadg.bkt.clouddn.com/7A4F5629-7CF6-4045-9666-FDD98303AB40.png" alt="1"></p>
+<p>本状态标识</p>
+<ul>
+<li>A- = untracked 未跟踪</li>
+<li>A = tracked 已跟踪未修改</li>
+<li>A+ = modified - 已修改未暂存</li>
+<li>B = staged - 已暂存未提交</li>
+<li><p>C = committed - 已提交未PUSH<br>各状态之间变化</p>
+</li>
+<li><p>A- -&gt; B : git add <file></file></p>
+</li>
+<li>B -&gt; A- : git rm –cached <file></file></li>
+<li>B -&gt; 删除不保留文件 : git rm -f <file></file></li>
+<li>A -&gt; A- : git rm –cached <file></file></li>
+<li>A -&gt; A+ : 修改文件</li>
+<li>A+ -&gt; A : git checkout – <file></file></li>
+<li>A+ -&gt; B : git add <file></file></li>
+<li>B -&gt; A+ : git reset HEAD <file></file></li>
+<li>B -&gt; C : git commit</li>
+<li>C -&gt; B : git reset –soft HEAD^</li>
+<li>修改最后一次提交:git commit —amend</li>
+</ul>
+<h2 id="代码回滚"><a href="#代码回滚" class="headerlink" title="代码回滚"></a>代码回滚</h2><p>【本地代码库回滚】<br>git reset –hard commit-id :回滚到commit-id，讲commit-id之后提交的commit都去除<br>git reset –hard HEAD~3：将最近3次的提交回滚<br>【远程代码库回滚】<br>这个是重点要说的内容，过程比本地回滚要复杂<br>应用场景：自动部署系统发布后发现问题，需要回滚到某一个commit，再重新发布<br>原理：先将本地分支退回到某个commit，删除远程分支，再重新push本地分支<br>操作步骤：<br>1、git checkout the_branch<br>2、git pull<br>3、git branch the_branch_backup //备份一下这个分支当前的情况<br>4、git reset –hard the_commit_id //把the_branch本地回滚到the_commit_id<br>5、git push origin :the_branch //删除远程 the_branch<br>6、git push origin the_branch //用回滚后的本地分支重新建立远程分支<br>7、git push origin :the_branch_backup //如果前面都成功了，删除这个备份分支<br>如果使用了gerrit做远程代码中心库和code review平台，需要确保操作git的用户具备分支的push权限，并且选择了 Force Push选项（在push权限设置里有这个选项）<br>另外，gerrit中心库是个bare库，将HEAD默认指向了master，因此master分支是不能进行删除操作的，最好不要选择删除master分支的策略，换用其他分支。如果一定要这样做，可以考虑到gerrit服务器上修改HEAD指针。。。不建议这样搞</p>
+<h2 id="git跟踪分支（tracking-branch）"><a href="#git跟踪分支（tracking-branch）" class="headerlink" title="git跟踪分支（tracking branch）"></a>git跟踪分支（tracking branch）</h2><p><img src="http://pi41gdadg.bkt.clouddn.com/0BC1CE8A-BE5F-4B00-89D8-C2EF3A9F5261.png" alt="5"></p>
+<h2 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h2><p>git log -3 查看最近三次提交信息 可以看到commit-id，author，date等信息<br>git log –graph –pretty=oneline –abbrev-commit # 查看提交状态</p>
+<h3 id="删除origin-head"><a href="#删除origin-head" class="headerlink" title="删除origin/head"></a>删除origin/head</h3><p>git remote set-head origin -d </p>
+<h3 id="设置-head-指向"><a href="#设置-head-指向" class="headerlink" title="设置 head 指向"></a>设置 head 指向</h3><p>git remote set-head origin master</p>
+<p>设置http代理<br>git config –global https.proxy <a href="https://127.0.0.1:1080" target="_blank" rel="noopener">https://127.0.0.1:1080</a><br>取消http代理<br>git config –global –unset http.proxy</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
+<li><a href="http://blog.csdn.net/afei__/article/details/51476529" target="_blank" rel="noopener">http://blog.csdn.net/afei__/article/details/51476529</a></li>
+<li><a href="http://blog.csdn.net/scythe666/article/details/51939725" target="_blank" rel="noopener">http://blog.csdn.net/scythe666/article/details/51939725</a></li>
+<li><a href="https://www.jianshu.com/p/ef373ea5c61b" target="_blank" rel="noopener">git hook</a></li>
+<li><a href="https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE" target="_blank" rel="noopener">tag</a></li>
+</ul>
+<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><h3 id="（Non-fast-forward）"><a href="#（Non-fast-forward）" class="headerlink" title="（Non-fast-forward）"></a>（Non-fast-forward）</h3><p>问题（Non-fast-forward）的出现原因在于：git仓库中已经有一部分代码，所以它不允许你直接把你的代码覆盖上去。于是你有2个选择方式：<br>1，强推，即利用强覆盖方式用你本地的代码替代git仓库内的内容<br>git push -f<br>2，先把git的东西fetch到你本地然后merge后再push<br>$ git fetch<br>$ git merge</p>
+<h3 id="如果是本地已经有项目了-想关联到gitlab上面"><a href="#如果是本地已经有项目了-想关联到gitlab上面" class="headerlink" title="如果是本地已经有项目了 想关联到gitlab上面"></a>如果是本地已经有项目了 想关联到gitlab上面</h3><p>mkdir WebApp<br>cd WebApp<br>git init<br>touch README<br>git add README<br>git commit -m ‘first commit’<br>git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:daixu/WebApp.git<br>git push -u origin master</p>
+<h3 id="repos"><a href="#repos" class="headerlink" title="repos"></a>repos</h3><p><a href="https://api.github.com/users/9188/repos" target="_blank" rel="noopener">https://api.github.com/users/9188/repos</a></p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">快乐至上</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/11/14/9563/" class="pre-post btn btn-default" title='proxy'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">proxy</span>
+        </a>
+    
+    
+        <a href="/2018/11/09/9561/" class="next-post btn btn-default" title='lerna'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">lerna</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#git文档"><span class="toc-text">git文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拉取代码"><span class="toc-text">拉取代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#拉取远端指定分支到本地"><span class="toc-text">拉取远端指定分支到本地</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支管理"><span class="toc-text">分支管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交代码"><span class="toc-text">提交代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-tag"><span class="toc-text">git tag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销代码"><span class="toc-text">撤销代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码回滚"><span class="toc-text">代码回滚</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git跟踪分支（tracking-branch）"><span class="toc-text">git跟踪分支（tracking branch）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看日志"><span class="toc-text">查看日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除origin-head"><span class="toc-text">删除origin/head</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置-head-指向"><span class="toc-text">设置 head 指向</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-text">参考文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到问题"><span class="toc-text">遇到问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#（Non-fast-forward）"><span class="toc-text">（Non-fast-forward）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果是本地已经有项目了-想关联到gitlab上面"><span class="toc-text">如果是本地已经有项目了 想关联到gitlab上面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#repos"><span class="toc-text">repos</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>❤</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
